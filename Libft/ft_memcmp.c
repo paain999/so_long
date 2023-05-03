@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/05/03 14:37:38 by dajimene         ###   ########.fr       */
+/*   Created: 2022/12/12 14:11:17 by dajimene          #+#    #+#             */
+/*   Updated: 2022/12/12 14:11:18 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
+#include "libft.h"
 
-# define SO_LONG_H
-#include <mlx.h>
-#include <stdio.h>
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
+{
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-#endif
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	if (n)
+		while (n--)
+			if (*s1++ != *s2++)
+				return (*(--s1) - *(--s2));
+	return (0);
+}

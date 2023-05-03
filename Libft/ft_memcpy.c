@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/05/03 14:37:38 by dajimene         ###   ########.fr       */
+/*   Created: 2022/12/11 23:00:13 by dajimene          #+#    #+#             */
+/*   Updated: 2022/12/11 23:01:28 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
+#include "libft.h"
 
-# define SO_LONG_H
-#include <mlx.h>
-#include <stdio.h>
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	const char	*srcc;
+	char		*dst;
 
-#endif
+	if ((dest == src) || n == 0)
+		return (dest);
+	if (!dest && !src)
+		return (0);
+	dst = (char *)dest;
+	srcc = (const char *)src;
+	while (n--)
+		dst[n] = srcc[n];
+	return (dest);
+}

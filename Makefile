@@ -6,7 +6,7 @@
 #    By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 12:17:46 by dajimene          #+#    #+#              #
-#    Updated: 2023/05/03 13:43:25 by dajimene         ###   ########.fr        #
+#    Updated: 2023/05/03 14:39:57 by dajimene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ endif
 
 # Variables
 PRINTF = printf
-CFLAGS = -Wall -Wextra -Werror -I
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 CC = gcc -MD
 AR = ar rcs
@@ -66,6 +66,6 @@ LIBFT_DIR = libft/
 INCLUDE = include/
 
 # Sources
-SRC_FILES	= 
+SRC_FILES	= main
 SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

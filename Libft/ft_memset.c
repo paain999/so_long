@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/05/03 14:37:38 by dajimene         ###   ########.fr       */
+/*   Created: 2022/12/12 14:11:40 by dajimene          #+#    #+#             */
+/*   Updated: 2022/12/12 14:11:40 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
+#include "libft.h"
 
-# define SO_LONG_H
-#include <mlx.h>
-#include <stdio.h>
+void	*ft_memset(void *src, int c, size_t len)
+{
+	size_t			count;
+	unsigned char	*buff;
 
-#endif
+	count = 0;
+	buff = (unsigned char *)src;
+	while (count < len)
+		buff[count++] = c;
+	return (src = buff);
+}
+/*int main(void)
+{
+    char    example[10] = "Holamundo";
+    ft_memset(example + 1, '#', 4);
+    printf("%s", example);
+    return (0);
+}*/
