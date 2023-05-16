@@ -6,7 +6,7 @@
 #    By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 12:17:46 by dajimene          #+#    #+#              #
-#    Updated: 2023/05/03 14:39:57 by dajimene         ###   ########.fr        #
+#    Updated: 2023/05/16 15:11:33 by dajimene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,16 +56,26 @@ endif
 
 # Variables
 PRINTF = printf
+CC = gcc -MD
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
-CC = gcc -MD
 AR = ar rcs
 SRC_DIR = src/
 OBJ_DIR = obj/
 LIBFT_DIR = libft/
 INCLUDE = include/
+BIN_DIR = bin/
+BIN = so_long
+NAME = $(BIN_DIR)/$(BIN)
+GNL_DIR = gnl
 
 # Sources
 SRC_FILES	= main
 SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+
+# Keycodes defined during compilation
+KEYCODES =  -D $(ESC) -D $(Q) -D $(R) -D $(W) -D $(A) -D $(S) -D $(D) -D $(UP) -D $(DOWN) -D $(LEFT) -D $(RIGHT)
+
+# Game speeds defined during compilation
+RATES = -D $(GRATE)
