@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:11:45 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/16 20:11:44 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:31:47 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 static	int	nbrstr(char const *s, char c)
 {

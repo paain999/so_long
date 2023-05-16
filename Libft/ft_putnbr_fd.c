@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:13:30 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/20 19:19:18 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:31:53 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {

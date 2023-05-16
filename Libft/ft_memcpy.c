@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 23:00:13 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/11 23:01:28 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:32:06 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {

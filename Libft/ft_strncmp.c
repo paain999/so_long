@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:32:55 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/13 18:37:21 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:31:06 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {

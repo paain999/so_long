@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:10:43 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/12 14:10:44 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:33:36 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_isalpha(int c)
 {

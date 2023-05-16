@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:33:39 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/12 14:33:47 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:30:39 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_toupper(int c)
 {

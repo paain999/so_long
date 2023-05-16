@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:11:40 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/12 14:11:40 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:32:00 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 void	*ft_memset(void *src, int c, size_t len)
 {

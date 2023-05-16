@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:11:11 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/13 17:38:08 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:32:15 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {

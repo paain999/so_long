@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:10:28 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/12 14:10:30 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:33:41 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 void	*ft_calloc(size_t num, size_t size)
 {

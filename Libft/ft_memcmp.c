@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:11:17 by dajimene          #+#    #+#             */
-/*   Updated: 2022/12/12 14:11:18 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/05/16 14:32:10 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {

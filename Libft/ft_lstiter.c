@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:10:22 by dajimene          #+#    #+#             */
-/*   Updated: 2023/05/16 14:33:45 by dajimene         ###   ########.fr       */
+/*   Created: 2023/05/15 19:30:53 by dajimene          #+#    #+#             */
+/*   Updated: 2023/05/16 14:32:36 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	size_t	i;
-
-	i = 0;
-	while (n--)
-		((char *)s)[i++] = '\0';
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }
