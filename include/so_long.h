@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/05/16 19:03:51 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:57:23 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 
 typedef struct s_game
 {
+	int		fd;
 	void	*mlx_ptr;
 	void	*window;
 	char	*map;
 }	t_game;
 
-t_game	checkmap(t_game game, char *map);
+t_game	checkfile(t_game game, char *map);
 #endif
