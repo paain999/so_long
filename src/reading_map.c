@@ -46,16 +46,14 @@ static	int	ft_countchar(int c, char *s)
 
 static void	ft_check_map_data(char *line, t_map_data *map_data, t_map_err *map_err, int islast, int isfirst)
 {
-	int ln_len;
-
-	ln_len = ft_strlen(line);
-	map_err->empty_line += (*line >= 7 && *line <= 13) ? 1 : 0;
+	map_err->empty_line += (*line >= 9 && *line <= 13) ? 1 : 0;
 	if(!map_data->n_col)
-		map_data->n_col = ln_len - 1;
-	map_err->inv_rowlen = (islast && (map_data->n_col != (ln_len + islast) - 1));
-	if ((map_data->n_col != ln_len - 1 && ft_strchr(line, '\n'))
-		|| (map_data->n_col != ln_len - 1 && !ft_strchr(line, '\n')))
-		map_err->inv_rowlen = 1;
+		map_data->n_col = (int)ft_strlen(line) - 1;
+	if ((map_data->n_col != ((int)ft_strlen(line) + islast) - 1 && ft_strchr(line, '\n'))
+	|| (map_data->n_col != ((int)ft_strlen(line) + islast) - 1 && !ft_strchr(line, '\n')))
+		map_err->inv_rowlen += 1;
+	if(islast && (map_data->n_col == ((int)ft_strlen(line) + islast) - 1) && map_err->inv_rowlen)
+		map_err->inv_rowlen--;
 	if (!(line[0] == '1' && line[map_data->n_col - 1] == '1') 
 		|| (ft_countchar('1', line) != map_data->n_col && isfirst) 
 		|| (ft_countchar('1', line) != map_data->n_col && islast))
