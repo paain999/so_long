@@ -49,9 +49,8 @@ static void	ft_check_map_data(char *line, t_map_data *map_data, t_map_err *map_e
 	map_err->empty_line += (*line >= 9 && *line <= 13) ? 1 : 0;
 	if(!map_data->n_col)
 		map_data->n_col = (int)ft_strlen(line) - 1;
-	if ((map_data->n_col != ((int)ft_strlen(line) + islast) - 1 && ft_strchr(line, '\n'))
-	|| (map_data->n_col != ((int)ft_strlen(line) + islast) - 1 && !ft_strchr(line, '\n')))
-		map_err->inv_rowlen += 1;
+	map_err->inv_rowlen += ((map_data->n_col != (int)ft_strlen(line) - 1) && !islast);
+	map_err->inv_rowlen -= ((map_data->n_col == ((int)ft_strlen(line) + islast) - 1) && islast);
 	if(islast && (map_data->n_col == ((int)ft_strlen(line) + islast) - 1) && map_err->inv_rowlen)
 		map_err->inv_rowlen--;
 	if (!(line[0] == '1' && line[map_data->n_col - 1] == '1') 
