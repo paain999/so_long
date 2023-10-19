@@ -51,8 +51,6 @@ static void	ft_check_map_data(char *line, t_map_data *map_data, t_map_err *map_e
 		map_data->n_col = (int)ft_strlen(line) - 1;
 	map_err->inv_rowlen += ((map_data->n_col != (int)ft_strlen(line) - 1) && !islast);
 	map_err->inv_rowlen -= ((map_data->n_col == ((int)ft_strlen(line) + islast) - 1) && islast);
-	if(islast && (map_data->n_col == ((int)ft_strlen(line) + islast) - 1) && map_err->inv_rowlen)
-		map_err->inv_rowlen--;
 	if (!(line[0] == '1' && line[map_data->n_col - 1] == '1') 
 		|| (ft_countchar('1', line) != map_data->n_col && isfirst) 
 		|| (ft_countchar('1', line) != map_data->n_col && islast))
