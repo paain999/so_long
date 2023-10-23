@@ -20,9 +20,9 @@ t_map_err	err_list(void)
 	map_err.inv_n_collect = 0;
 	map_err.inv_n_exit = 0;
 	map_err.inv_rowlen = 0;
+	map_err.empty_line = 0;
 	map_err.inv_n_player = 0;
 	map_err.inv_char = 0;
-	map_err.empty_line = 0;
 	return(map_err);
 }
 
@@ -35,6 +35,7 @@ char	**check_map(int fd, t_map_data *map_data)
 	map_str = NULL;
 	map = NULL;
 	*map_data = ft_new_map();
+	map_err = err_list();
 	map_str = ft_readmap(fd, map_data, &map_err , map_str);
 	map = ft_split(map_str, '\n');
 	free(map_str);

@@ -2,17 +2,16 @@
   "version": "2.0.0",
   "configurations": [
     {
-      "name": "(lldb) Launch",
+      "name": "(lldb) Iniciar",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/src/a.out",
-      "args": ["/home/kali/Desktop/git/so_long/maps-test/invalid/test.ber"],
+      "args": ["${workspaceFolder}/maps-test/invalid/test.ber"],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": false,
-      "MIMode": "gdb",
-      "miDebuggerPath": "/usr/bin/gdb"
+      "MIMode": "lldb"
     }
   ]
 }

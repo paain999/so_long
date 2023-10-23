@@ -76,7 +76,7 @@ char *ft_readmap(int fd, t_map_data *map_data, t_map_err *map_err ,char *map_str
 
 	line = NULL;
 	last_line = NULL;
-	map_err->inv_char = 0;
+	//map_err->inv_char = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
