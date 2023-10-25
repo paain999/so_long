@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
+/*   Updated: 2023/10/25 10:32:07 by dajimene         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 t_map_data ft_new_map(void)
@@ -31,6 +43,7 @@ char	**check_map(int fd, t_map_data *map_data)
 	char		*map_str;
 	char		**map;
 	t_map_err	map_err;
+	int			i;
 
 	map_str = NULL;
 	map = NULL;
@@ -41,6 +54,8 @@ char	**check_map(int fd, t_map_data *map_data)
 	free(map_str);
 	if (ft_print_map_errors(map_err))
 	{
+		while (map[i])
+			free(map[i++]);
 		free(map);
 		exit(-1);
 	}

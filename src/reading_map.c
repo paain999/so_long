@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reading_map.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/24 09:49:18 by dajimene          #+#    #+#             */
+/*   Updated: 2023/10/25 10:43:17 by dajimene         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 int	error_msg(char *msg)
@@ -76,7 +88,6 @@ char *ft_readmap(int fd, t_map_data *map_data, t_map_err *map_err ,char *map_str
 
 	line = NULL;
 	last_line = NULL;
-	//map_err->inv_char = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -87,12 +98,14 @@ char *ft_readmap(int fd, t_map_data *map_data, t_map_err *map_err ,char *map_str
 			else
 				ft_check_map_data(last_line, map_data, map_err, 1, 0);
 			free(last_line);
+			free(line);
 			break ;
 		}
 		free(last_line);
 		ft_check_map_data(line, map_data, map_err, 0, !map_data->n_row);
 		last_line =ft_strdup(line);
 		map_str = ft_strjoin(map_str, line);
+		free(line);
 		map_data->n_row++;
 	}
 	return(map_str);
