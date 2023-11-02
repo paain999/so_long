@@ -6,7 +6,7 @@
 #    By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 12:17:46 by dajimene          #+#    #+#              #
-#    Updated: 2023/05/16 15:11:33 by dajimene         ###   ########.fr        #
+#    Updated: 2023/10/26 17:32:33 by dajimene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SHELL=/bin/bash
 UNAME = $(shell uname -s)
 
 # Properties for MacOS
-CDEBUG = #-g3 -fsanitize=address
+LEAKS = -g3 -fsanitize=address
 GRATE = GAME_RATE=17
 GAME = game_mac.c
 RENDER = render_mac.c
@@ -35,10 +35,10 @@ LMLX = -lmlx -framework OpenGL -framework AppKit
 ifeq ($(UNAME), Linux)
 	#Properties for Linux
 	LEAKS =  valgrind --leak-check=full --show-leak-kinds=all -s -q 
-	LMLX = -lmlx -lXext -lX11
+	GRATE = GAME_RATE=80
 	GAME = game_linux.c
 	RENDER = render_linux.c
-	GRATE = GAME_RATE=80
+	LMLX = -lmlx -lXext -lX11
 
 	# Key Codes for Linux
 	ESC = KEY_ESC=65307
@@ -55,22 +55,23 @@ ifeq ($(UNAME), Linux)
 endif
 
 # Variables
-PRINTF = printf
 CC = gcc -MD
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar rcs
+GNL_DIR = gnl
+PRINTF = ft_printf
+LIBFT_DIR = libft/
+LIBFT = Libft/libft.a
 SRC_DIR = src/
 OBJ_DIR = obj/
-LIBFT_DIR = libft/
 INCLUDE = include/
 BIN_DIR = bin/
 BIN = so_long
 NAME = $(BIN_DIR)/$(BIN)
-GNL_DIR = gnl
 
 # Sources
-SRC_FILES	= main
+SRC_FILES	= main check_map reading_map
 SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 

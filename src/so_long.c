@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:05:24 by dajimene          #+#    #+#             */
-/*   Updated: 2023/10/25 10:32:04 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:58:37 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 		i++;
 	}
 	i = 0;
+	init(map, map_data);
 	while (map[i])
 		free(map[i++]);
 	free(map);

@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/10/24 09:50:06 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/10/31 18:17:46 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,35 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 
+# define SIZE 64
+
+# define W  13
+# define A 	0
+# define S  1
+# define D  2
+# define Q  12
+# define ESC 53
+# define UP  126
+# define DOWN 125
+# define LEFT  123
+# define RIGHT  124
+
 typedef struct s_game_data
 {
 	void	*mlx_ptr;
 	void	*window;
+	int		width;
+	int 	height;
+	char	**map;
+	int		g_rate;
 }			t_game_data;
+
+typedef struct s_player
+{
+	int	pos_x;
+	int pos_y;
+}			t_player;
+
 
 typedef struct s_map_data
 {
@@ -53,5 +77,6 @@ char		*ft_readmap(int fd, t_map_data *map_data, t_map_err *map_err ,char *map_st
 int			ft_print_map_errors(t_map_err map_err);
 t_map_err	err_list(void);
 t_map_data	ft_new_map(void);
+void		init(char **map, t_map_data map_data);
 
 #endif
