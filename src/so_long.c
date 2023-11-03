@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:05:24 by dajimene          #+#    #+#             */
-/*   Updated: 2023/10/31 14:58:37 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:57:17 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,16 @@
 
 int main(int argc, char **argv)
 {
-	char	**map;
 	t_map_data	map_data;
+	t_game_data	game;
 	int i;
 	
 	i = 0;
-	map = check_params(argc, argv, &map_data);
-	while (map[i])
-	{
-		printf("%s\n", map[i]);
-		i++;
-	}
-	i = 0;
-	init(map, map_data);
-	while (map[i])
-		free(map[i++]);
-	free(map);
+	ft_memset(&game, 0, sizeof(t_game_data)); //MALLOC
+	game.map = check_params(argc, argv, &map_data); //MALLOC
+	init(map_data, game);
+	while (game.map[i])
+		free(game.map[i++]);
+	free(game.map);
 	return (0);
 }

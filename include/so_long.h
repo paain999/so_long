@@ -6,20 +6,20 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/10/31 18:17:46 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:28:54 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
-
 # define SO_LONG_H
-#include <mlx.h>
-#include <stdio.h>
-#include "libft.h"
-#include <fcntl.h>
-#include "get_next_line.h"
 
-# define SIZE 64
+# include <mlx.h>
+# include <stdio.h>
+# include "libft.h"
+# include <fcntl.h>
+# include "get_next_line.h"
+
+# define SIZE 32
 
 # define W  13
 # define A 	0
@@ -36,17 +36,24 @@ typedef struct s_game_data
 {
 	void	*mlx_ptr;
 	void	*window;
-	int		width;
-	int 	height;
-	char	**map;
-	int		g_rate;
-}			t_game_data;
+	void	*player;
+	void	*exit_open;
+	void	*exit_closed;
+	void	*collectable;
+	void	*wall;
+	void	*floor;
 
-typedef struct s_player
-{
-	int	pos_x;
-	int pos_y;
-}			t_player;
+	char	**map;
+	char	**mapcpy;
+	
+	int		w_width;
+	int 	w_height;
+	int		steps;
+	int		player_x;
+	int		player_y;
+	int		exit_x;
+	int		exit_y;
+}			t_game_data;
 
 
 typedef struct s_map_data
@@ -77,6 +84,7 @@ char		*ft_readmap(int fd, t_map_data *map_data, t_map_err *map_err ,char *map_st
 int			ft_print_map_errors(t_map_err map_err);
 t_map_err	err_list(void);
 t_map_data	ft_new_map(void);
-void		init(char **map, t_map_data map_data);
+void		init(t_map_data map_data, t_game_data game);
+int			ft_countchar(int c, char *s);
 
 #endif

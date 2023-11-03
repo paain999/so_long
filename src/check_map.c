@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/10/25 10:32:07 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/03 13:02:10 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char	**check_map(int fd, t_map_data *map_data)
 	t_map_err	map_err;
 	int			i;
 
+	i = 0;
 	map_str = NULL;
 	map = NULL;
 	*map_data = ft_new_map();
@@ -68,18 +69,18 @@ char	**check_params(int argc, char **argv, t_map_data *map_data)
 
 	if (argc != 2)
 	{
-		error_msg("ERROR!, Wrong number of arguments.");
+		perror("ERROR!, Wrong number of arguments.");
 		exit(-1);
 	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
-		error_msg("ERROR!, Cannot read the file.");
+		perror("ERROR!, Cannot read the file.");
 		exit(-1);
 	}
 	if (!ft_strnstr(argv[1], ".ber"))
 	{
-		error_msg("ERROR!, Wrong file extension.");
+		perror("ERROR!, Wrong file extension.");
 		exit(-1);
 	}
 	return(check_map(fd, map_data));
