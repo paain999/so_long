@@ -6,13 +6,18 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:49:18 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/03 13:30:41 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/04 21:29:10 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void	ft_check_map_data(char *line, t_map_data *map_data, t_map_err *map_err, int islast, int isfirst)
+/*void	check_path(t_game_data game, t_map_err err)
+{
+
+}*/
+
+static void	ft_check_map_data(char *line, t_game_data *map_data, t_map_err *map_err, int islast, int isfirst)
 {
 	map_err->empty_line += (*line >= 9 && *line <= 13) ? 1 : 0;
 	if(!map_data->n_col)
@@ -37,7 +42,7 @@ static void	ft_check_map_data(char *line, t_map_data *map_data, t_map_err *map_e
 }
 
 
-char *ft_readmap(int fd, t_map_data *map_data, t_map_err *map_err ,char *map_str)
+char *ft_readmap(int fd, t_game_data *map_data, t_map_err *map_err ,char *map_str)
 {
 	char	*line;
 	char	*last_line;
@@ -50,7 +55,7 @@ char *ft_readmap(int fd, t_map_data *map_data, t_map_err *map_err ,char *map_str
 		if (!line)
 		{
 			if (!map_data->n_col)
-				error_msg("ERROR!, Empty map");
+				perror("ERROR!, Empty map");
 			else
 				ft_check_map_data(last_line, map_data, map_err, 1, 0);
 			free(last_line);

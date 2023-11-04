@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:48:44 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/03 13:28:33 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/04 20:57:45 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	ft_print_map_errors(t_map_err map_err)
 {
 	if (map_err.empty_line || map_err.inv_borders || map_err.inv_char || map_err.inv_n_collect
-		|| map_err.inv_n_exit || map_err.inv_n_player || map_err.inv_rowlen)
+		|| map_err.inv_n_exit || map_err.inv_n_player || map_err.inv_rowlen || map_err.inv_path)
 	{
 		if (map_err.empty_line)
 			perror("ERROR!, Empty line.");
@@ -32,6 +32,8 @@ int	ft_print_map_errors(t_map_err map_err)
 			perror("ERROR!, Invalid collect number.");
 		if (map_err.inv_char)
 			perror("ERROR!, The map contains and invalid char.");
+		if (map_err.inv_path)
+			perror("ERROR!, There is not a valid path in this map.");
 		return 1;
 	}
 	return 0;

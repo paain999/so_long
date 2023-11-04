@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/03 13:28:54 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/04 21:27:18 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,12 @@ typedef struct s_game_data
 	int		player_y;
 	int		exit_x;
 	int		exit_y;
+	int		n_row;
+	int		n_col;
+	int		n_collect;
+	int		n_exit;
+	int		n_player;
 }			t_game_data;
-
-
-typedef struct s_map_data
-{
-	int	n_row;
-	int	n_col;
-	int	n_collect;
-	int	n_exit;
-	int	n_player;
-}			t_map_data;
 
 typedef struct s_map_err
 {
@@ -74,17 +69,16 @@ typedef struct s_map_err
 	int	inv_n_collect;
 	int inv_char;
 	int empty_line;
+	int inv_path;
 }			t_map_err;
 
 
-char		**check_params(int argc, char **argv, t_map_data *map_data);
-char		**check_map(int fd, t_map_data *map_data);
-int			error_msg(char *msg);
-char		*ft_readmap(int fd, t_map_data *map_data, t_map_err *map_err ,char *map_str);
+char		**check_params(int argc, char **argv, t_game_data *game);
+char		**check_map(int fd, t_game_data *game);
+char		*ft_readmap(int fd, t_game_data *map_data, t_map_err *map_err ,char *map_str);
 int			ft_print_map_errors(t_map_err map_err);
 t_map_err	err_list(void);
-t_map_data	ft_new_map(void);
-void		init(t_map_data map_data, t_game_data game);
+void		init(t_game_data game);
 int			ft_countchar(int c, char *s);
 
 #endif

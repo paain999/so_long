@@ -6,23 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/03 13:02:10 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/04 21:18:32 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-t_map_data ft_new_map(void)
-{
-	t_map_data	map_data;
-
-	map_data.n_row = 0;
-	map_data.n_col = 0;
-	map_data.n_collect = 0;
-	map_data.n_exit = 0;
-	map_data.n_player = 0;
-	return(map_data);
-}
 
 t_map_err	err_list(void)
 {
@@ -35,10 +23,11 @@ t_map_err	err_list(void)
 	map_err.empty_line = 0;
 	map_err.inv_n_player = 0;
 	map_err.inv_char = 0;
+	map_err.inv_path = 0;
 	return(map_err);
 }
 
-char	**check_map(int fd, t_map_data *map_data)
+char	**check_map(int fd, t_game_data *game)
 {
 	char		*map_str;
 	char		**map;
@@ -48,9 +37,8 @@ char	**check_map(int fd, t_map_data *map_data)
 	i = 0;
 	map_str = NULL;
 	map = NULL;
-	*map_data = ft_new_map();
 	map_err = err_list();
-	map_str = ft_readmap(fd, map_data, &map_err , map_str);
+	map_str = ft_readmap(fd, game, &map_err , map_str);
 	map = ft_split(map_str, '\n');
 	free(map_str);
 	if (ft_print_map_errors(map_err))
@@ -63,7 +51,7 @@ char	**check_map(int fd, t_map_data *map_data)
 	return map;
 }
 
-char	**check_params(int argc, char **argv, t_map_data *map_data)
+char	**check_params(int argc, char **argv, t_game_data *game)
 {
 	int fd;
 
@@ -83,5 +71,5 @@ char	**check_params(int argc, char **argv, t_map_data *map_data)
 		perror("ERROR!, Wrong file extension.");
 		exit(-1);
 	}
-	return(check_map(fd, map_data));
+	return(check_map(fd, game));
 }
