@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/04 21:27:18 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/05 21:27:54 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,13 @@ typedef struct s_game_data
 	int		n_exit;
 	int		n_player;
 }			t_game_data;
+
+typedef struct s_pointer
+{
+	int	x;
+	int y;
+}			t_pointer;
+
 
 typedef struct s_map_err
 {

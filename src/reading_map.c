@@ -6,16 +6,14 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:49:18 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/04 21:29:10 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/05 19:33:09 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-/*void	check_path(t_game_data game, t_map_err err)
+void	check_path(t_game_data game, t_map_err err)
 {
-
-}*/
+}
 
 static void	ft_check_map_data(char *line, t_game_data *map_data, t_map_err *map_err, int islast, int isfirst)
 {
