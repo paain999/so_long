@@ -6,7 +6,7 @@
 #    By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 12:17:46 by dajimene          #+#    #+#              #
-#    Updated: 2023/11/02 19:02:39 by dajimene         ###   ########.fr        #
+#    Updated: 2023/11/07 13:07:28 by dajimene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS = -Wall -Wextra -Werror
 LMLX = -lmlx -framework OpenGL -framework AppKit
 RM = rm -f
 AR = ar rcs
-GNL_DIR = gnl
+GNL_DIR = gnl/
 PRINTF = ft_printf
 LIBFT_DIR = libft/
 LIBFT = Libft/libft.a
@@ -32,7 +32,7 @@ BIN = so_long
 NAME = $(BIN_DIR)/$(BIN)
 
 # Sources
-SRC_FILES	= main check_map reading_map
+SRC_FILES	= so_long check_map check_valid_path utils
 SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
