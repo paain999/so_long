@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/07 09:55:30 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/07 10:33:26 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ int			ft_print_map_errors(t_map_err map_err);
 t_map_err	err_list(void);
 void		init(t_game_data game);
 int			ft_countchar(int c, char *s);
-void		get_p_pos(t_game_data *game);
-char		**cpy_arr(char **dst, char **map, int size);
 void		check_path(t_game_data game, t_map_err err);
 void		free_and_exit(t_game_data game);
 

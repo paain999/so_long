@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:05:24 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/06 19:15:09 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/07 10:28:34 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int main(int argc, char **argv)
 	check_path(game, map_err);
 	//init(game);
 	while (game.map[i])
-		printf("%s\n", game.map[i++]);
+	{
+		ft_putstr_fd(game.map[i++], 1);
+		ft_putchar_fd('\n', 1);
+	}
 	free_and_exit(game);
 	return (0);
 }

@@ -6,49 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:48:44 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/07 09:55:58 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/07 10:30:59 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	get_p_pos(t_game_data *game)
-{
-	int x;
-	int y;
-
-	y = 0;
-	while (game->map[y])
-	{
-		x = 0;
-		while (game->map[y][x])
-		{
-			if (game->map[y][x] == 'P')
-				break;
-			x++;
-		}
-		if (game->map[y][x] == 'P')
-				break;
-		y++;
-	}
-	game->player_x = x;
-	game->player_y = y;
-}
-
-char	**cpy_arr(char **dst, char **map, int size)
-{
-	int i;
-
-	i = 0;
-	dst = malloc(sizeof(char *) * size + 1);
-	while (map[i])
-	{
-		dst[i] = ft_strdup(map[i]);
-		i++;
-	}
-	dst[size] = 0;
-	return dst;
-}
 
 int	ft_print_map_errors(t_map_err map_err)
 {
