@@ -6,14 +6,14 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/07 10:33:26 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:58:12 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <mlx.h>
+# include "../mlx/mlx.h"
 # include <stdio.h>
 # include "libft.h"
 # include <fcntl.h>
@@ -85,9 +85,11 @@ char		**check_map(int fd, t_game_data *game, t_map_err err);
 char		*ft_readmap(int fd, t_game_data *map_data, t_map_err *map_err ,char *map_str);
 int			ft_print_map_errors(t_map_err map_err);
 t_map_err	err_list(void);
-void		init(t_game_data game);
 int			ft_countchar(int c, char *s);
-void		check_path(t_game_data game, t_map_err err);
-void		free_and_exit(t_game_data game);
-
+void		check_path(t_game_data *game, t_map_err *err);
+void		free_and_exit(t_game_data *game);
+void		ft_put_graphics(t_game_data *game);
+void 		put_player(t_game_data *game, int y, int x);
+void 		put_collectable(t_game_data *game, int y, int x);
+void 		put_scene(t_game_data *game, int y, int x);
 #endif

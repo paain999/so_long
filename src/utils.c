@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:48:44 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/07 10:30:59 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:35:54 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,17 @@ int	ft_countchar(int c, char *s)
 	return i;
 }
 
-void	free_and_exit(t_game_data game)
+t_map_err	err_list(void)
 {
-	int i;
-	
-	i = 0;
-	while (game.map[i])
-		free(game.map[i++]);
-	free(game.map);
-	/*free(game.mlx_ptr);
-	free(game.player);
-	free(game.exit_open);
-	free(game.exit_closed);
-	free(game.collectable);
-	free(game.wall);
-	free(game.floor);*/
-	exit(1);
+	t_map_err	map_err;
+
+	map_err.inv_borders = 0;
+	map_err.inv_n_collect = 0;
+	map_err.inv_n_exit = 0;
+	map_err.inv_rowlen = 0;
+	map_err.empty_line = 0;
+	map_err.inv_n_player = 0;
+	map_err.inv_char = 0;
+	map_err.inv_path = 0;
+	return(map_err);
 }

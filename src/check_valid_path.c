@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:49:18 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/07 12:45:13 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/07 22:47:31 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,26 @@ static int is_valid_path(char **mapcpy,int y, int x)
 	}
 	return 0;
 }
-void	check_path(t_game_data game, t_map_err map_err)
+void	check_path(t_game_data *game, t_map_err *map_err)
 {
 	t_pointer	currentpos;
 	int			i;
 
-	get_p_pos(&game);
-	currentpos.x = game.player_x;
-	currentpos.y = game.player_y;
+	get_p_pos(game);
+	currentpos.x = game->player_x;
+	currentpos.y = game->player_y;
 	i = 0;
-	if(!is_valid_path(game.mapcpy, currentpos.y, currentpos.x))
+	if(!is_valid_path(game->mapcpy, currentpos.y, currentpos.x))
 	{
-		while (game.mapcpy[i])
-			free(game.mapcpy[i++]);
-		free(game.mapcpy);
-		map_err.inv_path = 1;
-		ft_print_map_errors(map_err);
+		while (game->mapcpy[i])
+			free(game->mapcpy[i++]);
+		free(game->mapcpy);
+		map_err->inv_path = 1;
+		ft_print_map_errors(*map_err);
 		free_and_exit(game);
 	}
 	ft_putstr_fd("There is a valid path\n", 1);
-	while (game.mapcpy[i])
-		free(game.mapcpy[i++]);
-	free(game.mapcpy);
+	while (game->mapcpy[i])
+		free(game->mapcpy[i++]);
+	free(game->mapcpy);
 }
