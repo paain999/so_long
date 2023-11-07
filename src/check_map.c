@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/07 10:30:18 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:38:02 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ char	**check_map(int fd, t_game_data *game, t_map_err map_err )
 	map = NULL;
 	map_str = ft_readmap(fd, game, &map_err , map_str);
 	map = ft_split(map_str, '\n');
+	game->mapcpy = ft_split(map_str, '\n');
 	free(map_str);
 	if (ft_print_map_errors(map_err))
 	{

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reading_map.c                                      :+:      :+:    :+:   */
+/*   check_valid_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:49:18 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/07 10:33:18 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:45:13 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,6 @@ static void	get_p_pos(t_game_data *game)
 	game->player_y = y;
 }
 
-static char	**cpy_arr(char **dst, char **map, int size)
-{
-	int i;
-
-	i = 0;
-	dst = malloc(sizeof(char *) * size + 1);
-	while (map[i])
-	{
-		dst[i] = ft_strdup(map[i]);
-		i++;
-	}
-	dst[size] = 0;
-	return dst;
-}
-
 static int is_valid_path(char **mapcpy,int y, int x)
 {
 	if (mapcpy[y][x] == 'E')
@@ -71,12 +56,11 @@ void	check_path(t_game_data game, t_map_err map_err)
 {
 	t_pointer	currentpos;
 	int			i;
-	
-	i = 0;
+
 	get_p_pos(&game);
-	game.mapcpy = cpy_arr(game.mapcpy, game.map, game.n_row);
 	currentpos.x = game.player_x;
 	currentpos.y = game.player_y;
+	i = 0;
 	if(!is_valid_path(game.mapcpy, currentpos.y, currentpos.x))
 	{
 		while (game.mapcpy[i])
