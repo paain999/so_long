@@ -6,27 +6,41 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:05:24 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/04 21:33:36 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/06 19:15:09 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+t_map_err	err_list(void)
+{
+	t_map_err	map_err;
+
+	map_err.inv_borders = 0;
+	map_err.inv_n_collect = 0;
+	map_err.inv_n_exit = 0;
+	map_err.inv_rowlen = 0;
+	map_err.empty_line = 0;
+	map_err.inv_n_player = 0;
+	map_err.inv_char = 0;
+	map_err.inv_path = 0;
+	return(map_err);
+}
 
 int main(int argc, char **argv)
 {
 	t_game_data	game;
+	t_map_err map_err;
 	int i;
 	
 	i = 0;
+	map_err = err_list();
 	ft_memset(&game, 0, sizeof(t_game_data)); //MALLOC
-	game.map = check_params(argc, argv, &game); //MALLOC
+	game.map = check_params(argc, argv, &game, map_err); //MALLOC
+	check_path(game, map_err);
 	//init(game);
 	while (game.map[i])
 		printf("%s\n", game.map[i++]);
-	i = 0;
-	while (game.map[i])
-		free(game.map[i++]);
-	free(game.map);
+	free_and_exit(game);
 	return (0);
 }
