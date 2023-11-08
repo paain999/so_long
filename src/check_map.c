@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/08 20:03:59 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/08 23:47:58 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static char *ft_readmap(int fd, t_game_data *map_data, t_map_err *map_err ,char 
 	char	*line;
 	char	*last_line;
 
+	line = NULL;
+	last_line = NULL;
 	while (1)
 	{
 		line = get_next_line(fd);
