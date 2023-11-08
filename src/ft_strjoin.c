@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:24:46 by dajimene          #+#    #+#             */
-/*   Updated: 2023/10/10 19:31:48 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/08 23:11:35 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/so_long.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

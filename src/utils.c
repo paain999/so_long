@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:48:44 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/07 20:35:54 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/08 19:02:41 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ int	ft_print_map_errors(t_map_err map_err)
 		|| map_err.inv_n_exit || map_err.inv_n_player || map_err.inv_rowlen || map_err.inv_path)
 	{
 		if (map_err.empty_line)
-			perror("ERROR!, Empty line.");
+			perror("Error\n Empty line.");
 		if (map_err.inv_rowlen)
-			perror("ERROR!, The map must be a rectangle.");
+			perror("Error\n The map must be a rectangle.");
 		if (map_err.inv_borders)
-			perror("ERROR!, The map need to has borders.");
+			perror("Error\n The map need to has borders.");
 		if (map_err.inv_n_player)
-			perror("ERROR!, Invalid number of players.");
+			perror("Error\n Invalid number of players.");
 		if (map_err.inv_n_exit)
-			perror("ERROR!, Invalid exit number.");
+			perror("Error\n Invalid exit number.");
 		if (map_err.inv_n_collect)
-			perror("ERROR!, Invalid collect number.");
+			perror("Error\n Invalid collect number.");
 		if (map_err.inv_char)
-			perror("ERROR!, The map contains and invalid char.");
+			perror("Error\n The map contains and invalid char.");
 		if (map_err.inv_path)
-			perror("ERROR!, There is not a valid path in this map.");
+			perror("Error\n There is not a valid path in this map.");
 		return 1;
 	}
 	return 0;

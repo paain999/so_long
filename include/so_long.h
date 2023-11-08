@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/07 22:58:12 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/08 23:20:11 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../mlx/mlx.h"
 # include <stdio.h>
-# include "libft.h"
 # include <fcntl.h>
 # include "get_next_line.h"
 
@@ -25,7 +24,6 @@
 # define A 	0
 # define S  1
 # define D  2
-# define Q  12
 # define ESC 53
 # define UP  126
 # define DOWN 125
@@ -80,16 +78,28 @@ typedef struct s_map_err
 }			t_map_err;
 
 
-char		**check_params(int argc, char **argv, t_game_data *game, t_map_err err);
-char		**check_map(int fd, t_game_data *game, t_map_err err);
-char		*ft_readmap(int fd, t_game_data *map_data, t_map_err *map_err ,char *map_str);
-int			ft_print_map_errors(t_map_err map_err);
 t_map_err	err_list(void);
+char		**check_params(int argc, char **argv, t_game_data *game, t_map_err err);
+int			ft_print_map_errors(t_map_err map_err);
 int			ft_countchar(int c, char *s);
+int			controls(int keycode, t_game_data *game);
 void		check_path(t_game_data *game, t_map_err *err);
 void		free_and_exit(t_game_data *game);
+void		show_exit(t_game_data *game, char *str);
 void		ft_put_graphics(t_game_data *game);
-void 		put_player(t_game_data *game, int y, int x);
-void 		put_collectable(t_game_data *game, int y, int x);
-void 		put_scene(t_game_data *game, int y, int x);
+void 		ft_put_scene(t_game_data *game, int y, int x);
+void		ft_put_images(t_game_data *game);
+void		*ft_memset(void *src, int c, size_t len);
+void		ft_putchar_fd(char c, int fd);
+void		ft_putstr_fd(char *s, int fd);
+void		ft_putnbr_fd(int n, int fd);
+char		**ft_split(char const *s, char c);
+char		*ft_strchr(const char *str, int c);
+char		*ft_strdup(const char *s);
+char		*ft_strjoin(char const *s1, char const *s2);
+size_t		ft_strlcpy(char *dest, char *src, size_t size);
+size_t		ft_strlen(const char *str);
+char		*ft_strnstr(const char *s1, const char *s2);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+
 #endif

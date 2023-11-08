@@ -1,34 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:24:33 by dajimene          #+#    #+#             */
-/*   Updated: 2023/10/10 11:08:31 by dajimene         ###   ########.fr       */
+/*   Created: 2022/12/12 14:24:39 by dajimene          #+#    #+#             */
+/*   Updated: 2023/11/08 23:11:31 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/so_long.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strdup(const char *s)
 {
-	int	i;
+	char	*copy;
+	char	*src;
+	int		i;
 
 	i = 0;
-	while (str[i])
+	src = (char *)s;
+	copy = (char *)malloc(ft_strlen(src) + 1);
+	if (!copy)
+		return (NULL);
+	while (src[i] != '\0')
 	{
-		if (str[i] == (char)c)
-			return ((char *)&str[i]);
+		copy[i] = src[i];
 		i++;
 	}
-	if (str[i] == (char)c)
-		return ((char *)&str[i]);
-	return (NULL);
+	copy[i] = '\0';
+	return (copy);
 }
-/*int	main ()
+/* int main()
 {
-	printf("%s", ft_strchr("teste", 'e'));
-	return (0);
-}*/
+    char source[] = "GeeksForGeeks";
+ 
+    char *target = ft_strdup(source);
+
+    printf("%s", target);
+    free(target);
+    return 0;
+} */

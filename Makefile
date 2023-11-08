@@ -5,40 +5,54 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/03 12:17:46 by dajimene          #+#    #+#              #
-#    Updated: 2023/11/08 00:13:18 by dajimene         ###   ########.fr        #
+#    Created: 2023/11/08 22:28:54 by dajimene          #+#    #+#              #
+#    Updated: 2023/11/08 22:36:53 by dajimene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME		:= so_long
 
-# Variables
-NAME := so_long
-LIBFT_DIR = Libft
-LIBFT = Libft/libft.a
-MLX = mlx/
-MLX_TARGET = mlx/
-GNL_DIR = gnl/
-SRC_DIR = src/
-OBJ_DIR = obj/
-INCLUDE = include
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I $(INCLUDE)
-AR = ar rcs
-RM = rm -f
-LMLX = -lmlx -framework OpenGL -framework AppKit
-LEAKS = -g3 -fsanitize=address
+INCLUDE		:= 	include/so_long.h
 
-# Sources
-SRC_FILES	= so_long check_map check_valid_path utils
-SRC			= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ			= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+LIBS		:= mlx
+LIBS_TARGET	+= mlx/libmlx.a
+LIBFT 		:= Libft/libft.a
+MFLAGS		:= -framework OpenGL -framework AppKit
+
+SRC_DIR     := src
+SRCS		:= so_long.c check_map.c check_valid_path.c \
+			controls.c graphics.c utils.c
+
+SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
+BUILD_DIR	:= obj
+OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+
+CC			:= cc
+CFLAGS		:= -g3 -Wall -Wextra -Werror 
+CPPFLAGS	:= $(addprefix -I,$(INCLUDE))
+LDFLAGS		:= $(addprefix -L,$(dir $(LIBS_TARGET)))
+LDLIBS		:= $(addprefix -l,$(LIBS))
+
+RM			:= rm -f
+RF			:= rm -rf
+DIR_DUP		= mkdir -p $(@D)
 
 .SILENT:
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $
+$(NAME): $(OBJS) $(LIBS_TARGET)
+	@$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) $(MFLAGS) -o $(NAME)
+	@echo "$(GREEN)░██████╗░█████╗░██╗░░░░░░█████╗░███╗░░██╗░██████╗░"
+	@echo "$(GREEN)██╔════╝██╔══██╗██║░░░░░██╔══██╗████╗░██║██╔════╝░"
+	@echo "$(GREEN)╚█████╗░██║░░██║██║░░░░░██║░░██║██╔██╗██║██║░░██╗░"
+	@echo "$(GREEN)░╚═══██╗██║░░██║██║░░░░░██║░░██║██║╚████║██║░░╚██╗"
+	@echo "$(GREEN)██████╔╝╚█████╔╝███████╗╚█████╔╝██║░╚███║╚██████╔╝"
+	@echo "$(GREEN)╚═════╝░░╚════╝░╚══════╝░╚════╝░╚═╝░░╚══╝░╚═════╝░"
+	@echo "$(YELLOW)\n !Use this command ./so_long assets/maps/<map_name>.ber\n$(DEF_COLOR)"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.C
-	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -I $(LIBFT_DIR) -c $< -o $@
+$(LIBS_TARGET):
+	@$(MAKE) -C $(@D) 2> /dev/null
+	
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(DIR_DUP)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<

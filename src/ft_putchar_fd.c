@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 18:46:28 by dajimene          #+#    #+#             */
-/*   Updated: 2023/05/16 14:32:48 by dajimene         ###   ########.fr       */
+/*   Created: 2022/12/20 18:41:48 by dajimene          #+#    #+#             */
+/*   Updated: 2023/11/08 23:11:11 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/so_long.h"
 
-void ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_putchar_fd(char c, int fd)
 {
-	t_list *last;
-
-	if (lst)
-	{
-		if (*lst)
-		{
-			last = ft_lstlast(*lst);
-			last->next = new;
-		}
-		else
-			*lst = new;
-	}
+	write(fd, &c, 1);
 }

@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:11:11 by dajimene          #+#    #+#             */
-/*   Updated: 2023/05/16 14:32:15 by dajimene         ###   ########.fr       */
+/*   Created: 2022/12/12 14:33:00 by dajimene          #+#    #+#             */
+/*   Updated: 2023/11/08 23:11:52 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/so_long.h"
 
-void	*ft_memchr(const void *str, int c, size_t n)
+char	*ft_strnstr(const char *s1, const char *s2)
 {
-	unsigned char	*s;
+	size_t	i;
+	size_t	j;
 
-	s = (unsigned char *)str;
-	while (n--)
+	i = 0;
+	if (*s2 == '\0' || s1 == s2)
+		return ((char *)s1);
+	while (s1[i] != '\0')
 	{
-		if (*s++ == (unsigned char)c)
-			return (--s);
+		j = 0;
+		while (s1[i + j] != '\0' && s2[j] == s1[i + j]
+			&& s2[j] != '\0')
+		{
+			if (s2[j + 1] == '\0')
+				return ((char *)s1 + i);
+			j++;
+		}
+		i++;
 	}
 	return (NULL);
 }
-/* int main () {
-   const char str[] = "http://www.tutorialspoint.com";
-   const char ch = '.';
-   char *ret;
+/*int	main()
+{
+	char *p;
 
-   ret = ft_memchr(str, ch, ft_strlen(str));
-
-   printf("String after |%c| is - |%s|\n", ch, ret);
-
-   return(0);
-} */
+	p = ft_strnstr("hola mundo", "mun", 11);
+	printf("%s", p);
+}*/

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 19:13:30 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/03 13:11:34 by dajimene         ###   ########.fr       */
+/*   Created: 2022/12/12 14:11:40 by dajimene          #+#    #+#             */
+/*   Updated: 2023/11/08 23:11:07 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/so_long.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	*ft_memset(void *src, int c, size_t len)
 {
-	char	c;
+	size_t			count;
+	unsigned char	*buff;
 
-	if (n == -2147483648)
-		write(fd, "-2147483648", 11);
-	else
-	{
-		if (n < 0)
-		{
-			write(fd, "-", 1);
-			n = -n;
-			ft_putnbr_fd(n, fd);
-		}
-		else if (n / 10)
-			ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(n % 10 + '0', fd);
-	}
+	count = 0;
+	buff = (unsigned char *)src;
+	while (count < len)
+		buff[count++] = c;
+	return (src = buff);
 }
+/*int main(void)
+{
+    char    example[10] = "Holamundo";
+    ft_memset(example + 1, '#', 4);
+    printf("%s", example);
+    return (0);
+}*/

@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 19:51:42 by dajimene          #+#    #+#             */
-/*   Updated: 2023/05/16 14:30:51 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/08 23:12:00 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/so_long.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

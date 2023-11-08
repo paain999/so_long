@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 14:10:22 by dajimene          #+#    #+#             */
-/*   Updated: 2023/05/16 14:33:45 by dajimene         ###   ########.fr       */
+/*   Created: 2022/12/12 14:32:49 by dajimene          #+#    #+#             */
+/*   Updated: 2023/11/08 23:11:43 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "../include/so_long.h"
 
-void	ft_bzero(void *s, size_t n)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
 	i = 0;
-	while (n--)
-		((char *)s)[i++] = '\0';
+	while (str[i])
+		i++;
+	return (i);
 }
