@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 14:11:45 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/08 23:11:22 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/10 00:35:06 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,19 +85,3 @@ char	**ft_split(char const *s, char c)
 	array[nmstr] = 0;
 	return (array);
 }
-
-/*int main()
-{
-    char **r;
-	int i;
-
-	i = 0;
-    r = ft_split("Hola Mundo Virtual", ' ');
-	while (r[i])
-	{
-		printf("%s ", r[i]);
-		i++;
-	}
-	free(r);
-    return (0);
-}*/

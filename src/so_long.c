@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:05:24 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/08 21:53:17 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/10 00:30:40 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	free_and_exit(t_game_data *game)
 	i = 0;
 	if(game->window)
 		mlx_destroy_window(game->mlx_ptr, game->window);
-	free(game->mlx_ptr);
+	if(game->mlx_ptr)
+		free(game->mlx_ptr);
 	while (game->map[i])
 		free(game->map[i++]);
 	free(game->map);
@@ -37,18 +38,11 @@ int main(int argc, char **argv)
 {
 	t_game_data	game;
 	t_map_err map_err;
-	int i;
-	
-	i = 0;
+
 	map_err = err_list();
 	ft_memset(&game, 0, sizeof(t_game_data));
 	game.map = check_params(argc, argv, &game, map_err);
 	check_path(&game, &map_err);
-	while (game.map[i])
-	{
-		ft_putstr_fd(game.map[i++], 1);
-		ft_putchar_fd('\n', 1);
-	}
 	game.mlx_ptr = mlx_init();
 	if (!game.mlx_ptr)
 		free_and_exit(&game);

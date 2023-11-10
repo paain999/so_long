@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/08 23:47:58 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/10 01:41:26 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static char *ft_readmap(int fd, t_game_data *map_data, t_map_err *map_err ,char 
 			free(line);
 			break ;
 		}
-		free(last_line);
+		if(last_line)
+			free(last_line);
 		ft_check_map_data(line, map_data, map_err, 0, !map_data->n_row);
 		last_line =ft_strdup(line);
 		map_str = ft_strjoin(map_str, line);

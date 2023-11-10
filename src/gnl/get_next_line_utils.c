@@ -6,11 +6,11 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 13:13:19 by dajimene          #+#    #+#             */
-/*   Updated: 2023/10/10 10:34:01 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/09 23:22:25 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/get_next_line.h"
+#include "../../include/get_next_line.h"
 
 char	*join(char *dest, char * stash, char *buff)
 {
