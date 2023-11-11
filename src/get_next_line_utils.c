@@ -6,13 +6,13 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 13:13:19 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/09 23:22:25 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/10 21:53:25 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/get_next_line.h"
+#include "../include/so_long.h"
 
-char	*join(char *dest, char * stash, char *buff)
+static char	*join(char *dest, char * stash, char *buff)
 {
 	int	i;
 	int	j;

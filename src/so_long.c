@@ -6,32 +6,51 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:05:24 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/10 00:30:40 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:51:19 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	free_and_exit(t_game_data *game)
+t_map_err	err_list(void)
+{
+	t_map_err	map_err;
+
+	map_err.inv_borders = 0;
+	map_err.inv_n_collect = 0;
+	map_err.inv_n_exit = 0;
+	map_err.inv_rowlen = 0;
+	map_err.empty_line = 0;
+	map_err.inv_n_player = 0;
+	map_err.inv_char = 0;
+	map_err.inv_path = 0;
+	return(map_err);
+}
+
+void	free_map(char **map)
 {
 	int i;
-	
+
 	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
+}
+
+void	free_and_exit(t_game_data *game)
+{
+	free_map(game->map);
+	mlx_destroy_image(game->mlx_ptr, game->player);
+	mlx_destroy_image(game->mlx_ptr, game->wall);
+	mlx_destroy_image(game->mlx_ptr, game->collectable);
+	mlx_destroy_image(game->mlx_ptr, game->exit);
+	mlx_destroy_image(game->mlx_ptr, game->floor);
 	if(game->window)
 		mlx_destroy_window(game->mlx_ptr, game->window);
 	if(game->mlx_ptr)
 		free(game->mlx_ptr);
-	while (game->map[i])
-		free(game->map[i++]);
-	free(game->map);
+	system("leaks so_long");
 	exit(0);
-}
-
-void show_exit(t_game_data *game, char *str)
-{
-	ft_putstr_fd(str, 1);
-	write(1, "\n", 1);
-	free_and_exit(game);
 }
 
 int main(int argc, char **argv)
@@ -41,18 +60,8 @@ int main(int argc, char **argv)
 
 	map_err = err_list();
 	ft_memset(&game, 0, sizeof(t_game_data));
-	game.map = check_params(argc, argv, &game, map_err);
+	check_params(argc, argv, &game, map_err);
 	check_path(&game, &map_err);
-	game.mlx_ptr = mlx_init();
-	if (!game.mlx_ptr)
-		free_and_exit(&game);
-	game.window = mlx_new_window(game.mlx_ptr, (SIZE * game.n_col), (SIZE * game.n_row), "SO LONG ADVENTURE TIME!");
-	if (!game.window)
-		free_and_exit(&game);
-	ft_put_images(&game);
-	ft_put_graphics(&game);
-	mlx_key_hook(game.window, controls, &game);
-	mlx_hook(game.window, 17, 0, (void *)free_and_exit, &game);
-	mlx_loop(game.mlx_ptr);
+	init(&game);
 	return (0);
 }

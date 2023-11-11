@@ -6,70 +6,58 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:49:06 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/09 23:57:48 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/10 19:38:56 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	ft_put_images(t_game_data *game)
+void	ft_draw_img(t_game_data *game, void *img, int x, int y)
 {
-	int i;
-	int j;
-
-	game->floor = mlx_xpm_file_to_image(game->mlx_ptr, "../sprites/xpm/floor.xpm", &i, &j);
-	game->wall = mlx_xpm_file_to_image(game->mlx_ptr, "../sprites/xpm/wall.xpm", &i, &j);
-	game->player = mlx_xpm_file_to_image(game->mlx_ptr, "../sprites/xpm/player.xpm", &i, &j);
-	game->exit_open = mlx_xpm_file_to_image(game->mlx_ptr, "../sprites/xpm/open-exit.xpm", &i, &j);
-	game->exit_closed = mlx_xpm_file_to_image(game->mlx_ptr, "../sprites/xpm/exit-closed.xpm", &i, &j);
-	game->collectable = mlx_xpm_file_to_image(game->mlx_ptr, "../sprites/xpm/coin-bag.xpm", &i, &j);
+	mlx_put_image_to_window(game->mlx_ptr, game->window, img, x * SIZE, y * SIZE + SIZE);
 }
 
-void ft_put_scene(t_game_data *game, int y, int x)
+static void	player_draw(t_game_data *game, void *image, int x, int y)
 {
-	if (game->map[y][x] == 'E')
+	game->player_x = x;
+	game->player_y = y;
+	ft_draw_img(game, image, x, y);
+}
+
+static void	ft_draw_exit(t_game_data *game, int x, int y)
+{
+	if (game->n_collect == 0)
 	{
-		mlx_put_image_to_window(game->mlx_ptr, game->window, game->exit_closed, x * SIZE, y * SIZE);
-		game->exit_x = x;
-		game->exit_y = y;
+		mlx_destroy_image(game->mlx_ptr, game->exit);
+		game->exit = mlx_xpm_file_to_image
+			(game->mlx_ptr, "../sprites/xpm/exit_open.xpm", &game->img_w, &game->img_h);
 	}
-	else if (game->map[y][x] == 'O')
-		mlx_put_image_to_window(game->mlx_ptr, game->window, game->exit_open, x * SIZE, y * SIZE);
-	else if (game->map[y][x] == '0')
-		mlx_put_image_to_window(game->mlx_ptr, game->window, game->floor, x * SIZE, y * SIZE);
-	else if (game->map[y][x] == '1')
-		mlx_put_image_to_window(game->mlx_ptr, game->window, game->wall, x * SIZE, y * SIZE);
+	ft_draw_img(game, game->exit, x, y);
 }
 
-static void put_player(t_game_data *game, int y, int x)
-{
-	if (game->map[y][x] == 'P')
-		mlx_put_image_to_window(game->mlx_ptr, game->window, game->player, x * SIZE, y * SIZE);
-}
-
-static void  put_collectable(t_game_data *game, int y, int x)
-{
-	if (game->map[y][x] == 'C')
-		mlx_put_image_to_window(game->mlx_ptr, game->window, game->collectable, x * SIZE, y * SIZE);
-}
-
-
-
-void	ft_put_graphics(t_game_data *game)
+int	ft_draw_map(t_game_data *game)
 {
 	int y;
 	int x;
 
-	y = 0;
-	while (game->map[y])
+	y = -1;
+	while (game->map[++y])
 	{
-		x = 0;
-		while (game->map[x])
+		x = -1;
+		while (game->map[++x])
 		{
-			put_player(game, y, x);
-			put_collectable(game, y, x);
-			ft_put_scene(game, y, x);
+			if(game->map[y][x] == '1')
+				ft_draw_img(game, game->wall, x, y);
+			else if(game->map[y][x] == '0')
+				ft_draw_img(game, game->floor, x, y);
+			else if(game->map[y][x] == 'P')
+				player_draw(game, game->player, x, y);
+			else if(game->map[y][x] == 'C')
+				ft_draw_img(game, game->collectable, x, y);
+			else if(game->map[y][x] == 'E')
+				ft_draw_exit(game, x, y);
 		}
-		y++;
-	}	
+	}
+	display_moves(game);
+	return 0;
 }

@@ -6,10 +6,19 @@
 #    By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 22:28:54 by dajimene          #+#    #+#              #
-#    Updated: 2023/11/10 01:54:18 by dajimene         ###   ########.fr        #
+#    Updated: 2023/11/10 22:21:53 by dajimene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
+
+NAME		:= so_long
+
+INCLUDE		:= include/so_long.h
+
+MLX			:= mlx
+MLX_TARGET	+= mlx/libmlx.a
+MFLAGS		:= -framework OpenGL -framework AppKit
 
 RED = \033[1;31m
 GREEN = \033[1;32m
@@ -18,42 +27,32 @@ PURPLE = \033[1;35m
 DEF_COLOR = \033[0;39m
 UNDER = \033[4m
 
-NAME		:= so_long
+SRC_DIR		:= src
+SRCS		:= so_long.c check_map.c check_valid_path.c controls.c\
+			graphics.c init_game.c playermovement.c utils.c ft_split.c ft_itoa.c \
+			libft.c libft_str.c get_next_line.c get_next_line_utils.c
 
-INCLUDE		:= 	include/
+SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 
-MLX			:= mlx/
-LINKS		:= -Lmlx -lmlx -framework OpenGL -framework AppKit
-X11_FLAGS	:= -L/usr/X11/lib -lXext -lX11
-
-GNL_DIR		:= gnl/
-SRC_DIR		:= src/
-SRCS		:= $(SRC_DIR)so_long.c $(SRC_DIR)check_map.c $(SRC_DIR)check_valid_path.c \
-			$(SRC_DIR)controls.c $(SRC_DIR)graphics.c $(SRC_DIR)utils.c \
-			$(SRC_DIR)ft_memset.c $(SRC_DIR)ft_putchar_fd.c $(SRC_DIR)ft_putstr_fd.c \
-			$(SRC_DIR)ft_putnbr_fd.c $(SRC_DIR)ft_strchr.c $(SRC_DIR)ft_strdup.c $(SRC_DIR)ft_strjoin.c \
-			$(SRC_DIR)ft_strlcpy.c $(SRC_DIR)ft_strlen.c $(SRC_DIR)ft_strnstr.c $(SRC_DIR)ft_substr.c $(SRC_DIR)ft_split.c \
-			$(SRC_DIR)$(GNL_DIR)get_next_line.c $(SRC_DIR)$(GNL_DIR)get_next_line_utils.c
-			
-OBJ_DIR		:= obj/
-OBJS		:= $(SRCS:.c=.o)
+OBJ_DIR		:= obj
+OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 CC			:= cc
 CFLAGS		:= -g3 -Wall -Wextra -Werror 
-MFLAG		:= -fsanitize=address
+CPPFLAGS	:= $(addprefix -I,$(INCLUDE))
+LDFLAGS		:= $(addprefix -L,$(dir $(MLX_TARGET)))
+LDLIBS		:= $(addprefix -l,$(MLX))
 
 RM			:= rm -f
 RF			:= rm -rf
 
-PREFIXED	:= $(addprefix $(OBJ_DIR), $(OBJS))
+DIR_DUP		= mkdir -p $(@D)
 
 .SILENT:
 all: $(NAME)
 
-$(NAME): $(PREFIXED)
-	@make -C $(MLX)
-	@cp mlx/libmlx.a $(NAME)
-	@$(CC) $(CFLAGS) $(LINKS) -o $(NAME) $(PREFIXED)
+$(NAME): $(OBJS) $(MLX_TARGET)
+	@$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) $(MFLAGS) -o $(NAME)
 	@echo "$(GREEN)░██████╗░█████╗░██╗░░░░░░█████╗░███╗░░██╗░██████╗░"
 	@echo "$(GREEN)██╔════╝██╔══██╗██║░░░░░██╔══██╗████╗░██║██╔════╝░"
 	@echo "$(GREEN)╚█████╗░██║░░██║██║░░░░░██║░░██║██╔██╗██║██║░░██╗░"
@@ -63,25 +62,26 @@ $(NAME): $(PREFIXED)
 	@echo "\n$(GREEN)$(UNDER)All files are compiled!$(DEF_COLOR)\n"
 	@echo "$(YELLOW)\n !Use this command ./so_long maps/<map_name>.ber\n$(DEF_COLOR)"
 
-$(OBJ_DIR)%.o:	%.c
-	@mkdir -p $(OBJ_DIR)$(SRC_DIR)
-	@mkdir -p $(OBJ_DIR)$(SRC_DIR)$(GNL_DIR)
-	@echo "$(YELLOW)Compiling with >>$(DEF_COLOR) $(CC) $(CFLAGS):\t $<"
-	@$(CC) $(CFLAGS) -c -o $@ $<
+$(MLX_TARGET):
+	@make -C $(@D) 2> /dev/null
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(DIR_DUP)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 clean:
-	@rm -rf $(OBJS) $(OBJ_DIR)
-	@echo "$(YELLOW)Cleaning!"
+	for f in $(dir $(MLX_TARGET)); do $(MAKE) -C $$f clean; done
+	$(RM) $(OBJS)
+	@echo "$(YELLOW)CLEANED!"
 
 fclean:		clean
-	@make clean -C mlx
-	@rm -rf $(NAME)
-	@rm -rf so_long
-	@rm -rf libmlx.a
-	@echo "$(RED)All deleted!$(DEF_COLOR)\n"
+	$(RM) $(NAME)
+	$(RF) ./a.out.dSYM
+	$(RF) $(OBJ_DIR)
+	@echo "$(RED)ALL DELETED!$(DEF_COLOR)\n"
 	
 sanitize:
-	$(CC) $(CFLAGS) $(MFLAG) $(SRCS) $(LINKS)
+	$(CC) $(CFLAGS) $(DFLAGS) $(SRCS) -Lmlx -lmlx $(MFLAGS)
 	
 re: fclean all
 

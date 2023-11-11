@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/10 01:41:26 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/10 20:58:46 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void	ft_check_map_data(char *line, t_game_data *map_data, t_map_err *map_err, int islast, int isfirst)
 {
-	map_err->empty_line += (*line >= 9 && *line <= 13) ? 1 : 0;
+	//map_err->empty_line += (*line >= 9 && *line <= 13) ? 1 : 0;
+	map_err->empty_line += (*line >= 9 && *line <= 13);
 	if(!map_data->n_col)
 		map_data->n_col = (int)ft_strlen(line) - 1;
 	map_err->inv_rowlen += ((map_data->n_col != (int)ft_strlen(line) - 1) && !islast);
@@ -68,30 +69,24 @@ static char *ft_readmap(int fd, t_game_data *map_data, t_map_err *map_err ,char 
 	return(map_str);
 }
 
-static char	**check_map(int fd, t_game_data *game, t_map_err map_err )
+static void check_map(int fd, t_game_data *game, t_map_err map_err )
 {
 	char		*map_str;
-	char		**map;
-	int			i;
 
-	i = 0;
 	map_str = NULL;
-	map = NULL;
 	map_str = ft_readmap(fd, game, &map_err , map_str);
-	map = ft_split(map_str, '\n');
+	game->map = ft_split(map_str, '\n');
 	game->mapcpy = ft_split(map_str, '\n');
 	free(map_str);
 	if (ft_print_map_errors(map_err))
 	{
-		while (map[i])
-			free(map[i++]);
-		free(map);
+		free_map(game->map);
+		free_map(game->mapcpy);
 		exit(-1);
 	}
-	return map;
 }
 
-char	**check_params(int argc, char **argv, t_game_data *game, t_map_err map_err)
+void	check_params(int argc, char **argv, t_game_data *game, t_map_err map_err)
 {
 	int fd;
 
@@ -111,5 +106,5 @@ char	**check_params(int argc, char **argv, t_game_data *game, t_map_err map_err)
 		perror("ERROR!, Wrong file extension.");
 		exit(-1);
 	}
-	return(check_map(fd, game, map_err));
+	check_map(fd, game, map_err);
 }

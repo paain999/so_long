@@ -6,13 +6,13 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:10:30 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/10 00:49:59 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/10 21:54:11 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/get_next_line.h"
+#include "../include/so_long.h"
 
-char	*clean_stash(char *stash)
+static char	*clean_stash(char *stash)
 {
 	int		i;
 	int		j;
@@ -41,7 +41,7 @@ char	*clean_stash(char *stash)
 	return (cleanned);
 }
 
-char	*create_line(char *stash)
+static char	*create_line(char *stash)
 {
 	char	*str;
 	int		i;
@@ -66,7 +66,7 @@ char	*create_line(char *stash)
 	return (str);
 }
 
-char	*add_to_stash(int fd, char *stash)
+static char	*add_to_stash(int fd, char *stash)
 {
 	char	*buff;
 	int		readed;
