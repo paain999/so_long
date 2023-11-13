@@ -25,25 +25,30 @@ void	display_moves(t_game_data *game)
 	free(n_coins);
 }
 
-void	init_imgs(t_game_data *game)
+static void	init_imgs(t_game_data *game)
 {
-	game->floor = mlx_xpm_file_to_image(game->mlx_ptr, "../sprites/xpm/floor.xpm", &game->img_w, &game->img_h);
-	game->wall = mlx_xpm_file_to_image(game->mlx_ptr, "../sprites/xpm/wall.xpm", &game->img_w, &game->img_h);
-	game->player = mlx_xpm_file_to_image(game->mlx_ptr, "../sprites/xpm/player/front.xpm", &game->img_w, &game->img_h);
-	game->exit = mlx_xpm_file_to_image(game->mlx_ptr, "../sprites/xpm/exit_closed.xpm", &game->img_w, &game->img_h);
-	game->collectable = mlx_xpm_file_to_image(game->mlx_ptr, "../sprites/xpm/coin-bag.xpm", &game->img_w, &game->img_h);
+	game->floor = mlx_xpm_file_to_image
+	(game->mlx_ptr, "../sprites/xpm/floor.xpm", &game->img_w, &game->img_h);
+	game->wall = mlx_xpm_file_to_image
+	(game->mlx_ptr, "../sprites/xpm/wall.xpm", &game->img_w, &game->img_h);
+	game->player = mlx_xpm_file_to_image
+	(game->mlx_ptr, "../sprites/xpm/player/front.xpm", &game->img_w, &game->img_h);
+	game->exit = mlx_xpm_file_to_image
+	(game->mlx_ptr, "../sprites/xpm/exit_closed.xpm", &game->img_w, &game->img_h);
+	game->collectable = mlx_xpm_file_to_image
+	(game->mlx_ptr, "../sprites/xpm/coin-bag.xpm", &game->img_w, &game->img_h);
 }
 
-void	init(t_game_data *game)
+void	init(t_game_data game)
 {
-	game->mlx_ptr = mlx_init();
-	if (!game->mlx_ptr)
-		free_and_exit(game);
-	game->window = mlx_new_window(game->mlx_ptr, (SIZE * game->n_col), (SIZE * game->n_row), "SO LONG ADVENTURE TIME!");	
-	if (!game->window)
-		free_and_exit(game);
-	init_imgs(game);
-	ft_draw_map(game);
-	ft_gamehooks(game);
-	mlx_loop(game->mlx_ptr);
+	game.mlx_ptr = mlx_init();
+	if (!game.mlx_ptr)
+		free_and_exit(&game, 2);
+	game.window = mlx_new_window(game.mlx_ptr, (SIZE * game.n_col), (SIZE * game.n_row), "SO LONG ADVENTURE TIME!");	
+	if (!game.window)
+		free_and_exit(&game, 2);
+	init_imgs(&game);
+	ft_draw_map(&game);
+	ft_gamehooks(&game);
+	mlx_loop(game.mlx_ptr);
 }

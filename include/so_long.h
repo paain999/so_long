@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/10 21:59:33 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:55:16 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,9 @@ void		check_params(int argc, char **argv, t_game_data *game, t_map_err err);
 int			ft_print_map_errors(t_map_err map_err);
 int			ft_countchar(int c, char *s);
 void		check_path(t_game_data *game, t_map_err *err);
-void		free_and_exit(t_game_data *game);
+void		free_and_exit(t_game_data *game, int n_exit);
 int			ft_draw_map(t_game_data *game);
 void 		ft_draw_img(t_game_data *game, void *img,int y, int x);
-void		init_imgs(t_game_data *game);
 void		*ft_memset(void *src, int c, size_t len);
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
@@ -106,7 +105,7 @@ char		*ft_itoa(int n);
 size_t		ft_strlcpy(char *dest, char *src, size_t size);
 size_t		ft_strlen(const char *str);
 void		free_map(char **map);
-void		init(t_game_data *game);
+void		init(t_game_data game);
 void		display_moves(t_game_data *game);
 void		ft_gamehooks(t_game_data *game);
 void		print_winner(t_game_data *game);

@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:05:24 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/10 20:51:19 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:55:26 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	free_map(char **map)
 	free(map);
 }
 
-void	free_and_exit(t_game_data *game)
+void	free_and_exit(t_game_data *game, int n_exit)
 {
 	free_map(game->map);
 	mlx_destroy_image(game->mlx_ptr, game->player);
@@ -50,7 +50,7 @@ void	free_and_exit(t_game_data *game)
 	if(game->mlx_ptr)
 		free(game->mlx_ptr);
 	system("leaks so_long");
-	exit(0);
+	exit(n_exit);
 }
 
 int main(int argc, char **argv)
@@ -62,6 +62,6 @@ int main(int argc, char **argv)
 	ft_memset(&game, 0, sizeof(t_game_data));
 	check_params(argc, argv, &game, map_err);
 	check_path(&game, &map_err);
-	init(&game);
+	init(game);
 	return (0);
 }

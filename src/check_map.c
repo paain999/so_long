@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/10 20:58:46 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/13 11:52:59 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static void check_map(int fd, t_game_data *game, t_map_err map_err )
 	{
 		free_map(game->map);
 		free_map(game->mapcpy);
-		exit(-1);
+		exit(2);
 	}
 }
 
@@ -93,18 +93,18 @@ void	check_params(int argc, char **argv, t_game_data *game, t_map_err map_err)
 	if (argc != 2)
 	{
 		perror("ERROR!, Wrong number of arguments.");
-		exit(-1);
+		exit(2);
 	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
 		perror("ERROR!, Cannot read the file.");
-		exit(-1);
+		exit(2);
 	}
 	if (!ft_strnstr(argv[1], ".ber"))
 	{
 		perror("ERROR!, Wrong file extension.");
-		exit(-1);
+		exit(2);
 	}
 	check_map(fd, game, map_err);
 }
