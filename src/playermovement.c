@@ -1,7 +1,5 @@
 #include "../include/so_long.h"
 
-#include "../include/so_long.h"
-
 static void	player_update_image(char key, t_game_data *game)
 {
 	mlx_destroy_image(game->mlx_ptr, game->player);

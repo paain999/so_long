@@ -6,7 +6,7 @@
 #    By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/08 22:28:54 by dajimene          #+#    #+#              #
-#    Updated: 2023/11/10 22:21:53 by dajimene         ###   ########.fr        #
+#    Updated: 2023/11/13 20:02:06 by dajimene         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME		:= so_long
 
-INCLUDE		:= include/so_long.h
+INCLUDE		:= include/
 
 MLX			:= mlx
 MLX_TARGET	+= mlx/libmlx.a

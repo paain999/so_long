@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:49:18 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/13 11:54:37 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/13 20:24:36 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int is_valid_path(char **mapcpy,int y, int x)
 {
 	if (mapcpy[y][x] == 'E')
 		return 1;
-	if (mapcpy[y][x] != '1' && mapcpy[y][x] != 'F' && mapcpy[y][x])
+	if (mapcpy[y][x] != '1' && mapcpy[y][x] != 'F' && mapcpy[y][x] != '\0')
 	{
 		mapcpy[y][x] = 'F';
 		if (is_valid_path(mapcpy ,y - 1, x) || is_valid_path(mapcpy ,y + 1, x) 
