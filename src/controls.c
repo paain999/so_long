@@ -27,7 +27,7 @@ static void	ft_game_controls(int keycode, t_game_data *game)
 static int keypressed(int keycode, t_game_data *game)
 {
 	if (keycode == ESC)
-		free_and_exit(game, 0);
+		free_and_exit(game, 1);
 	else if (!game->endgame)
 		ft_game_controls(keycode, game);
 	return (0);

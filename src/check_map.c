@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/14 10:13:43 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:36:42 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ static void check_map(int fd, t_game_data *game, t_map_err map_err )
 		while (game->map[i])
 			free(game->map[i++]);
 		free(game->map);
+		system("leaks so_long");
 		exit(2);
 	}
 }
