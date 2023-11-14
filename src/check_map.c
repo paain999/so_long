@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/14 10:36:42 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:16:34 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	ft_check_map_data(char *line, t_game_data *map_data, t_map_err *map_err, int islast, int isfirst)
 {
-	//map_err->empty_line += (*line >= 9 && *line <= 13) ? 1 : 0;
 	map_err->empty_line += (*line >= 9 && *line <= 13);
 	if(!map_data->n_col)
 		map_data->n_col = (int)ft_strlen(line) - 1;
@@ -89,7 +88,6 @@ static void check_map(int fd, t_game_data *game, t_map_err map_err )
 		while (game->map[i])
 			free(game->map[i++]);
 		free(game->map);
-		system("leaks so_long");
 		exit(2);
 	}
 }

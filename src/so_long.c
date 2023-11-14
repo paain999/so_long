@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:05:24 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/14 10:10:15 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:22:33 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,6 @@ t_map_err	err_list(void)
 	return(map_err);
 }
 
-/*void	free_map(char **map)
-{
-	int i;
-
-	i = 0;
-	while (map[i])
-		free(map[i++]);
-	free(map);
-}*/
-
 void	free_and_exit(t_game_data *game, int n_exit)
 {
 	int i;
@@ -52,7 +42,6 @@ void	free_and_exit(t_game_data *game, int n_exit)
 	mlx_destroy_image(game->mlx_ptr, game->floor);
 	if(game->window)
 		mlx_destroy_window(game->mlx_ptr, game->window);
-	system("leaks so_long");
 	exit(n_exit);
 }
 

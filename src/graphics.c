@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:49:06 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/14 10:25:03 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:15:34 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_draw_map(t_game_data *game)
 	while (game->map[++y] != (void *)0)
 	{
 		x = -1;
-		while (game->map[++x] != (void *)0)
+		while (game->map[y][++x] != '\0')
 		{
 			if(game->map[y][x] == '1')
 				ft_draw_img(game, game->wall, x, y);

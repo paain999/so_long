@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:49:18 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/14 10:37:23 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/14 21:17:02 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	check_path(t_game_data *game, t_map_err *map_err)
 		while (game->mapcpy[i])
 			free(game->mapcpy[i++]);
 		free(game->mapcpy);
-		system("leaks so_long");
 		map_err->inv_path = 1;
 		ft_print_map_errors(*map_err);
 		free_and_exit(game, 2);
@@ -71,5 +70,4 @@ void	check_path(t_game_data *game, t_map_err *map_err)
 	while (game->mapcpy[i])
 			free(game->mapcpy[i++]);
 		free(game->mapcpy);
-	system("leaks so_long");
 }

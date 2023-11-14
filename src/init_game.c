@@ -23,7 +23,6 @@ void	display_moves(t_game_data *game)
 	mlx_string_put(game->mlx_ptr, game->window, 90, 50, 0xFFFFFF, n_coins);
 	free(str);
 	free(n_coins);
-	system("leaks so_long");
 }
 
 static void	init_imgs(t_game_data *game)
