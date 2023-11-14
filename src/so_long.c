@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 17:05:24 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/13 20:55:42 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:10:15 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_map_err	err_list(void)
 	return(map_err);
 }
 
-void	free_map(char **map)
+/*void	free_map(char **map)
 {
 	int i;
 
@@ -35,11 +35,16 @@ void	free_map(char **map)
 	while (map[i])
 		free(map[i++]);
 	free(map);
-}
+}*/
 
 void	free_and_exit(t_game_data *game, int n_exit)
 {
-	free_map(game->map);
+	int i;
+
+	i = 0;
+	while (game->map[i])
+		free(game->map[i++]);
+	free(game->map);
 	mlx_destroy_image(game->mlx_ptr, game->player);
 	mlx_destroy_image(game->mlx_ptr, game->wall);
 	mlx_destroy_image(game->mlx_ptr, game->collectable);
@@ -47,9 +52,7 @@ void	free_and_exit(t_game_data *game, int n_exit)
 	mlx_destroy_image(game->mlx_ptr, game->floor);
 	if(game->window)
 		mlx_destroy_window(game->mlx_ptr, game->window);
-	/*if(game->mlx_ptr)
-		free(game->mlx_ptr);
-	system("leaks so_long");*/
+	system("leaks so_long");
 	exit(n_exit);
 }
 

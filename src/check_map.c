@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/13 11:52:59 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:13:43 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static char *ft_readmap(int fd, t_game_data *map_data, t_map_err *map_err ,char 
 static void check_map(int fd, t_game_data *game, t_map_err map_err )
 {
 	char		*map_str;
+	int			i;
 
 	map_str = NULL;
 	map_str = ft_readmap(fd, game, &map_err , map_str);
@@ -80,8 +81,14 @@ static void check_map(int fd, t_game_data *game, t_map_err map_err )
 	free(map_str);
 	if (ft_print_map_errors(map_err))
 	{
-		free_map(game->map);
-		free_map(game->mapcpy);
+		i = 0;
+		while (game->mapcpy[i])
+			free(game->mapcpy[i++]);
+		free(game->mapcpy);
+		i = 0;
+		while (game->map[i])
+			free(game->map[i++]);
+		free(game->map);
 		exit(2);
 	}
 }

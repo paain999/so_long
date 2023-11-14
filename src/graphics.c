@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:49:06 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/11 21:41:50 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/14 09:45:26 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_draw_img(t_game_data *game, void *img, int x, int y)
 {
-	mlx_put_image_to_window(game->mlx_ptr, game->window, img, x * SIZE, y * SIZE + SIZE);
+	mlx_put_image_to_window(game->mlx_ptr, game->window, img, x * SIZE, y * SIZE);
 }
 
 static void	player_draw(t_game_data *game, void *image, int x, int y)
@@ -30,7 +30,7 @@ static void	ft_draw_exit(t_game_data *game, int x, int y)
 	{
 		mlx_destroy_image(game->mlx_ptr, game->exit);
 		game->exit = mlx_xpm_file_to_image
-			(game->mlx_ptr, "../sprites/xpm/open-exit.xpm", &game->img_w, &game->img_h);
+			(game->mlx_ptr, "./sprites/xpm/open-exit.xpm", &game->img_w, &game->img_h);
 	}
 	ft_draw_img(game, game->exit, x, y);
 }

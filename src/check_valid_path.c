@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:49:18 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/13 20:24:36 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:12:51 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,15 @@ void	check_path(t_game_data *game, t_map_err *map_err)
 	i = 0;
 	if(!is_valid_path(game->mapcpy, currentpos.y, currentpos.x))
 	{
-		free_map(game->mapcpy);
+		while (game->mapcpy[i])
+			free(game->mapcpy[i++]);
+		free(game->mapcpy);
 		map_err->inv_path = 1;
 		ft_print_map_errors(*map_err);
 		free_and_exit(game, 2);
 	}
 	ft_putstr_fd("There is a valid path\n", 1);
 	while (game->mapcpy[i])
-	{
-		ft_putstr_fd(game->mapcpy[i++], 1);
-		ft_putchar_fd('\n', 1);
-	}
-	free_map(game->mapcpy);
+			free(game->mapcpy[i++]);
+		free(game->mapcpy);
 }

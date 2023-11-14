@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/13 20:55:25 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:14:19 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <string.h>
 # include <fcntl.h>
 
-# define SIZE 64
+# define SIZE 32
 
 # define W  13
 # define A 	0
@@ -104,7 +104,7 @@ char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_itoa(int n);
 size_t		ft_strlcpy(char *dest, char *src, size_t size);
 size_t		ft_strlen(const char *str);
-void		free_map(char **map);
+//void		free_map(char **map);
 void		init(t_game_data *game);
 void		display_moves(t_game_data *game);
 void		ft_gamehooks(t_game_data *game);

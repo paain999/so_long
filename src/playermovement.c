@@ -5,19 +5,19 @@ static void	player_update_image(char key, t_game_data *game)
 	mlx_destroy_image(game->mlx_ptr, game->player);
 	if (key == 'w')
 		game->player = mlx_xpm_file_to_image
-			(game->mlx_ptr, "sprites/xpm/player/back.xpm", \
+			(game->mlx_ptr, "./sprites/xpm/player/back.xpm", \
 			&game->img_w, &game->img_h);
 	else if (key == 's')
 		game->player = mlx_xpm_file_to_image
-			(game->mlx_ptr, "sprites/xpm/player/front.xpm", \
+			(game->mlx_ptr, "./sprites/xpm/player/front.xpm", \
 			&game->img_w, &game->img_h);
 	else if (key == 'd')
 		game->player = mlx_xpm_file_to_image
-			(game->mlx_ptr, "sprites/xpm/player/right.xpm", \
+			(game->mlx_ptr, "./sprites/xpm/player/right.xpm", \
 			&game->img_w, &game->img_h);
 	else if (key == 'a')
 		game->player = mlx_xpm_file_to_image
-			(game->mlx_ptr, "sprites/xpm/player/left.xpm", \
+			(game->mlx_ptr, "./sprites/xpm/player/left.xpm", \
 			&game->img_w, &game->img_h);
 }
 
