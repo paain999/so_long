@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/15 01:27:08 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:54:14 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int islast, int isfirst)
 	map_data->n_exit += ft_countchar('E', line);
 	map_data->n_collect += ft_countchar('C', line);
 	map_data->n_player += ft_countchar('P', line);
-	map_data->inv_n_player = (map_data->n_player > 1 || map_data->n_player < 1);
+	map_data->inv_n_player = (map_data->n_player != 1);
 	map_data->inv_n_collect = (map_data->n_collect == 0);
-	map_data->inv_n_exit = (map_data->n_exit > 1 || map_data->n_exit < 1);
+	map_data->inv_n_exit = (map_data->n_exit != 1);
 	while (*line && line)
 	{
 		map_data->inv_char += (!ft_strchr("01CEP\n", *line));
@@ -39,7 +39,7 @@ int islast, int isfirst)
 	}
 }
 
-static char *ft_readmap(int fd, t_game_data *map_data, char *map_str)
+static char	*ft_readmap(int fd, t_game_data *map_data, char *map_str)
 {
 	char	*line;
 	char	*last_line;
