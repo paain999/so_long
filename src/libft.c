@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/15 01:22:42 by dajimene          #+#    #+#             */
+/*   Updated: 2023/11/15 01:22:51 by dajimene         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 char	*ft_strnstr(const char *s1, const char *s2)
@@ -49,7 +61,7 @@ size_t	ft_strlcpy(char *dest, char *src, size_t size)
 		dest[i] = src[i];
 		++i;
 	}
-		dest[i] = '\0';
+	dest[i] = '\0';
 	return (src_len);
 }
 

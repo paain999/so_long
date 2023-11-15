@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   playermovement.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/15 01:23:26 by dajimene          #+#    #+#             */
+/*   Updated: 2023/11/15 01:23:36 by dajimene         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 static void	player_update_image(char key, t_game_data *game)
@@ -24,7 +36,8 @@ static void	player_update_image(char key, t_game_data *game)
 void	player_w(t_game_data *game)
 {
 	player_update_image('w', game);
-	if (game->map[game->player_y][game->player_x] == 'E' && game->n_collect == 0)
+	if (game->map[game->player_y][game->player_x]
+		== 'E' && game->n_collect == 0)
 	{
 		mlx_clear_window(game->mlx_ptr, game->window);
 		game->map[game->player_y + 1][game->player_x] = '0';
@@ -51,7 +64,8 @@ void	player_w(t_game_data *game)
 void	player_s(t_game_data *game)
 {
 	player_update_image('s', game);
-	if (game->map[game->player_y][game->player_x] == 'E' && game->n_collect == 0)
+	if (game->map[game->player_y][game->player_x]
+		== 'E' && game->n_collect == 0)
 	{
 		mlx_clear_window(game->mlx_ptr, game->window);
 		game->map[game->player_y - 1][game->player_x] = '0';
@@ -78,7 +92,8 @@ void	player_s(t_game_data *game)
 void	player_d(t_game_data *game)
 {
 	player_update_image('d', game);
-	if (game->map[game->player_y][game->player_x] == 'E' && game->n_collect == 0)
+	if (game->map[game->player_y][game->player_x]
+		== 'E' && game->n_collect == 0)
 	{
 		mlx_clear_window(game->mlx_ptr, game->window);
 		game->map[game->player_y][game->player_x - 1] = '0';
@@ -105,7 +120,8 @@ void	player_d(t_game_data *game)
 void	player_a(t_game_data *game)
 {
 	player_update_image('a', game);
-	if (game->map[game->player_y][game->player_x] == 'E' && game->n_collect == 0)
+	if (game->map[game->player_y][game->player_x]
+		== 'E' && game->n_collect == 0)
 	{
 		mlx_clear_window(game->mlx_ptr, game->window);
 		game->map[game->player_y][game->player_x + 1] = '0';

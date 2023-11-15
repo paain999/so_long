@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:10:30 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/10 21:54:11 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/15 01:18:39 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static char	*add_to_stash(int fd, char *stash)
 {
 	char	*buff;
 	int		readed;
-	
+
 	buff = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buff)
 		return (NULL);
@@ -78,7 +78,7 @@ static char	*add_to_stash(int fd, char *stash)
 	while (!ft_strchr_gnl(stash, '\n') && readed != 0)
 	{
 		readed = (int)read(fd, buff, BUFFER_SIZE);
-		if((!stash && readed <= 0) || readed == -1)
+		if ((!stash && readed <= 0) || readed == -1)
 		{
 			free(buff);
 			free(stash);
@@ -92,15 +92,15 @@ static char	*add_to_stash(int fd, char *stash)
 	}
 	free(buff);
 	buff = NULL;
-	return(stash);
+	return (stash);
 }
 
 char	*get_next_line(int fd)
 {
 	static char		*stash[1024];
 	char			*line;
-	
-	if(fd < 0 || BUFFER_SIZE <= 0)
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = NULL;
 	stash[fd] = add_to_stash(fd, stash[fd]);
@@ -108,12 +108,12 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = create_line(stash[fd]);
 	stash[fd] = clean_stash(stash[fd]);
-	if(!ft_strlen_gnl(line))
+	if (!ft_strlen_gnl(line))
 	{
 		free(stash[fd]);
 		free(line);
 		line = NULL;
 		stash[fd] = NULL;
 	}
-	return(line);
+	return (line);
 }

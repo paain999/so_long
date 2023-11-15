@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/14 10:14:19 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/15 00:34:05 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,14 @@ typedef struct s_game_data
 	int		img_w;
 	int		img_h;
 	int		endgame;
+	int		inv_rowlen;
+	int 	inv_borders;
+	int		inv_n_exit;
+	int		inv_n_player;
+	int		inv_n_collect;
+	int 	inv_char;
+	int 	empty_line;
+	int 	inv_path;
 }			t_game_data;
 
 typedef struct s_pointer
@@ -69,25 +77,10 @@ typedef struct s_pointer
 	int y;
 }			t_pointer;
 
-
-typedef struct s_map_err
-{
-	int	inv_rowlen;
-	int inv_borders;
-	int	inv_n_exit;
-	int	inv_n_player;
-	int	inv_n_collect;
-	int inv_char;
-	int empty_line;
-	int inv_path;
-}			t_map_err;
-
-
-t_map_err	err_list(void);
-void		check_params(int argc, char **argv, t_game_data *game, t_map_err err);
-int			ft_print_map_errors(t_map_err map_err);
+void		check_params(int argc, char **argv, t_game_data *game);
+int			ft_print_map_errors(t_game_data *map_err);
 int			ft_countchar(int c, char *s);
-void		check_path(t_game_data *game, t_map_err *err);
+void		check_path(t_game_data *game);
 void		free_and_exit(t_game_data *game, int n_exit);
 int			ft_draw_map(t_game_data *game);
 void 		ft_draw_img(t_game_data *game, void *img,int y, int x);
@@ -104,7 +97,6 @@ char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_itoa(int n);
 size_t		ft_strlcpy(char *dest, char *src, size_t size);
 size_t		ft_strlen(const char *str);
-//void		free_map(char **map);
 void		init(t_game_data *game);
 void		display_moves(t_game_data *game);
 void		ft_gamehooks(t_game_data *game);

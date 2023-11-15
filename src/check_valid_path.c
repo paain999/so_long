@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 09:49:18 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/14 21:17:02 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/15 01:08:56 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	get_p_pos(t_game_data *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (game->map[y])
@@ -24,31 +24,33 @@ static void	get_p_pos(t_game_data *game)
 		while (game->map[y][x])
 		{
 			if (game->map[y][x] == 'P')
-				break;
+				break ;
 			x++;
 		}
 		if (game->map[y][x] == 'P')
-				break;
+			break ;
 		y++;
 	}
 	game->player_x = x;
 	game->player_y = y;
 }
 
-static int is_valid_path(char **mapcpy,int y, int x)
+static int	is_valid_path(char **mapcpy, int y, int x)
 {
 	if (mapcpy[y][x] == 'E')
-		return 1;
+		return (1);
 	if (mapcpy[y][x] != '1' && mapcpy[y][x] != 'F' && mapcpy[y][x] != '\0')
 	{
 		mapcpy[y][x] = 'F';
-		if (is_valid_path(mapcpy ,y - 1, x) || is_valid_path(mapcpy ,y + 1, x) 
-			|| is_valid_path(mapcpy ,y, x - 1) || is_valid_path(mapcpy ,y, x + 1))
-			return 1;
+		if (is_valid_path(mapcpy, y - 1, x) || is_valid_path(mapcpy, y + 1, x)
+			|| is_valid_path(mapcpy, y, x - 1)
+			|| is_valid_path(mapcpy, y, x + 1))
+			return (1);
 	}
-	return 0;
+	return (0);
 }
-void	check_path(t_game_data *game, t_map_err *map_err)
+
+void	check_path(t_game_data *game)
 {
 	t_pointer	currentpos;
 	int			i;
@@ -57,17 +59,17 @@ void	check_path(t_game_data *game, t_map_err *map_err)
 	currentpos.x = game->player_x;
 	currentpos.y = game->player_y;
 	i = 0;
-	if(!is_valid_path(game->mapcpy, currentpos.y, currentpos.x))
+	if (!is_valid_path(game->mapcpy, currentpos.y, currentpos.x))
 	{
 		while (game->mapcpy[i])
 			free(game->mapcpy[i++]);
 		free(game->mapcpy);
-		map_err->inv_path = 1;
-		ft_print_map_errors(*map_err);
+		game->inv_path = 1;
+		ft_print_map_errors(game);
 		free_and_exit(game, 2);
 	}
 	ft_putstr_fd("There is a valid path\n", 1);
 	while (game->mapcpy[i])
-			free(game->mapcpy[i++]);
-		free(game->mapcpy);
+		free(game->mapcpy[i++]);
+	free(game->mapcpy);
 }

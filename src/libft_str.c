@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft_str.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/15 01:22:26 by dajimene          #+#    #+#             */
+/*   Updated: 2023/11/15 01:22:35 by dajimene         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 void	*ft_memset(void *src, int c, size_t len)
@@ -37,7 +49,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	if(!s1)
+	if (!s1)
 		s1 = ft_strdup("");
 	if (*s1 == '\0' && *s2 == '\0')
 		return (ft_strdup(""));

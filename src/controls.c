@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   controls.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/15 01:10:19 by dajimene          #+#    #+#             */
+/*   Updated: 2023/11/15 01:10:34 by dajimene         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 static void	ft_game_controls(int keycode, t_game_data *game)
@@ -24,7 +36,7 @@ static void	ft_game_controls(int keycode, t_game_data *game)
 	}
 }
 
-static int keypressed(int keycode, t_game_data *game)
+static int	keypressed(int keycode, t_game_data *game)
 {
 	if (keycode == ESC)
 		free_and_exit(game, 1);
@@ -33,7 +45,7 @@ static int keypressed(int keycode, t_game_data *game)
 	return (0);
 }
 
-void ft_gamehooks(t_game_data *game)
+void	ft_gamehooks(t_game_data *game)
 {
 	mlx_hook(game->window, 2, 1L << 0, keypressed, game);
 	mlx_hook(game->window, 17, 1L << 17, (void *)free_and_exit, game);

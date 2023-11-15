@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:49:06 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/14 21:15:34 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/15 01:19:47 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	ft_draw_img(t_game_data *game, void *img, int x, int y)
 {
-	mlx_put_image_to_window(game->mlx_ptr, game->window, img, x * SIZE, y * SIZE);
+	mlx_put_image_to_window(game->mlx_ptr, game->window,
+		img, x * SIZE, y * SIZE);
 }
 
 static void	player_draw(t_game_data *game, void *image, int x, int y)
@@ -30,15 +31,16 @@ static void	ft_draw_exit(t_game_data *game, int x, int y)
 	{
 		mlx_destroy_image(game->mlx_ptr, game->exit);
 		game->exit = mlx_xpm_file_to_image
-			(game->mlx_ptr, "./sprites/xpm/open-exit.xpm", &game->img_w, &game->img_h);
+			(game->mlx_ptr, "./sprites/xpm/open-exit.xpm",
+				&game->img_w, &game->img_h);
 	}
 	ft_draw_img(game, game->exit, x, y);
 }
 
 int	ft_draw_map(t_game_data *game)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = -1;
 	while (game->map[++y] != (void *)0)
@@ -46,18 +48,19 @@ int	ft_draw_map(t_game_data *game)
 		x = -1;
 		while (game->map[y][++x] != '\0')
 		{
-			if(game->map[y][x] == '1')
+			if (game->map[y][x] == '1')
 				ft_draw_img(game, game->wall, x, y);
-			else if(game->map[y][x] == '0')
+			else if (game->map[y][x] == '0')
 				ft_draw_img(game, game->floor, x, y);
-			else if(game->map[y][x] == 'P')
+			else if (game->map[y][x] == 'P')
 				player_draw(game, game->player, x, y);
-			else if(game->map[y][x] == 'C')
+			else if (game->map[y][x] == 'C')
 				ft_draw_img(game, game->collectable, x, y);
-			else if(game->map[y][x] == 'E')
+			else if (game->map[y][x] == 'E')
 				ft_draw_exit(game, x, y);
 		}
 	}
-	display_moves(game);
-	return 0;
+	if (!game->endgame)
+		display_moves(game);
+	return (0);
 }

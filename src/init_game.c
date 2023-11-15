@@ -27,19 +27,24 @@ void	display_moves(t_game_data *game)
 
 static void	init_imgs(t_game_data *game)
 {
-	game->floor = mlx_xpm_file_to_image(game->mlx_ptr, "./sprites/xpm/floor.xpm", &game->img_w, &game->img_h);
+	game->floor = mlx_xpm_file_to_image(game->mlx_ptr,
+			"./sprites/xpm/floor.xpm", &game->img_w, &game->img_h);
 	if (!game->floor)
 		ft_putstr_fd("Error, Failed to load floor image\n", 2);
-	game->wall = mlx_xpm_file_to_image(game->mlx_ptr, "./sprites/xpm/wall.xpm", &game->img_w, &game->img_h);
+	game->wall = mlx_xpm_file_to_image(game->mlx_ptr,
+			"./sprites/xpm/wall.xpm", &game->img_w, &game->img_h);
 	if (!game->wall)
 		ft_putstr_fd("Error, Failed to load wall image\n", 2);
-	game->player = mlx_xpm_file_to_image(game->mlx_ptr, "./sprites/xpm/player/front.xpm", &game->img_w, &game->img_h);
+	game->player = mlx_xpm_file_to_image(game->mlx_ptr,
+			"./sprites/xpm/player/front.xpm", &game->img_w, &game->img_h);
 	if (!game->player)
 		ft_putstr_fd("Error, Failed to load player image\n", 2);
-	game->exit = mlx_xpm_file_to_image(game->mlx_ptr, "./sprites/xpm/exit-closed.xpm", &game->img_w, &game->img_h);
+	game->exit = mlx_xpm_file_to_image(game->mlx_ptr,
+			"./sprites/xpm/exit-closed.xpm", &game->img_w, &game->img_h);
 	if (!game->exit)
 		ft_putstr_fd("Error, Failed to load exit image\n", 2);
-	game->collectable = mlx_xpm_file_to_image(game->mlx_ptr, "./sprites/xpm/coin-bag.xpm", &game->img_w, &game->img_h);
+	game->collectable = mlx_xpm_file_to_image(game->mlx_ptr,
+			"./sprites/xpm/coin-bag.xpm", &game->img_w, &game->img_h);
 	if (!game->collectable)
 		ft_putstr_fd("Error, Failed to load collectable image\n", 2);
 }
@@ -49,7 +54,8 @@ void	init(t_game_data *game)
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
 		free_and_exit(game, 2);
-	game->window = mlx_new_window(game->mlx_ptr, (SIZE * game->n_col + SIZE), (SIZE * game->n_row + SIZE), "SO LONG ADVENTURE TIME!");	
+	game->window = mlx_new_window(game->mlx_ptr, (SIZE * game->n_col + SIZE),
+			(SIZE * game->n_row + SIZE), "SO LONG ADVENTURE TIME!");
 	if (!game->window)
 		free_and_exit(game, 2);
 	init_imgs(game);

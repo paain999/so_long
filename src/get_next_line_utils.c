@@ -6,17 +6,17 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 13:13:19 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/10 21:53:25 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/15 01:18:06 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static char	*join(char *dest, char * stash, char *buff)
+static char	*join(char *dest, char *stash, char *buff)
 {
 	int	i;
 	int	j;
-	int newlen;
+	int	newlen;
 
 	i = 0;
 	j = 0;
@@ -43,7 +43,8 @@ char	*ft_strjoin_gnl(char *stash, char *buff)
 	}
 	if (!stash || !buff)
 		return (NULL);
-	result = (char *)malloc(1 + ft_strlen_gnl(stash) + ft_strlen_gnl(buff) * sizeof(char));
+	result = (char *)malloc(1 + ft_strlen_gnl(stash)
+			+ ft_strlen_gnl(buff) * sizeof(char));
 	if (!result)
 		return (NULL);
 	result = join(result, stash, buff);
