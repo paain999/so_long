@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 10:56:54 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/15 09:54:14 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:25:14 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,10 @@ static char	*ft_readmap(int fd, t_game_data *map_data, char *map_str)
 	char	*line;
 	char	*last_line;
 
-	line = NULL;
+	line = get_next_line(fd);
 	last_line = NULL;
-	while (1)
+	while (line)
 	{
-		line = get_next_line(fd);
-		if (!line)
-		{
-			if (!map_data->n_col)
-				perror("ERROR!, Empty map");
-			else
-				ft_check_map_data(last_line, map_data, 1, 0);
-			free(last_line);
-			free(line);
-			break ;
-		}
 		if (last_line)
 			free(last_line);
 		ft_check_map_data(line, map_data, 0, !map_data->n_row);
@@ -66,6 +55,15 @@ static char	*ft_readmap(int fd, t_game_data *map_data, char *map_str)
 		map_str = ft_strjoin(map_str, line);
 		free(line);
 		map_data->n_row++;
+		line = get_next_line(fd);
+	}
+	if (!line)
+	{
+		if (!map_data->n_col)
+			perror("Error, Empty map.");
+		else
+			ft_check_map_data(last_line, map_data, 1, 0);
+		free(last_line);
 	}
 	return (map_str);
 }

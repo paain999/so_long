@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 13:13:19 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/15 01:18:06 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/11/15 10:31:56 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,28 +51,6 @@ char	*ft_strjoin_gnl(char *stash, char *buff)
 	free(stash);
 	return (result);
 }
-
-/*char	*ft_strdup_gnl( char *s)
-{
-	char	*copy;
-	char	*src;
-	int		i;
-
-	i = 0;
-	src = (char *)s;
-	if (!src)
-		return (NULL);
-	copy = (char *)malloc(ft_strlen_gnl(src) + 1);
-	if (!copy)
-		return (NULL);
-	while (src[i] != '\0')
-	{
-		copy[i] = src[i];
-		i++;
-	}
-	copy[i] = '\0';
-	return (copy);
-}*/
 
 int	ft_strlen_gnl(char *str)
 {
