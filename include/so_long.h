@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 12:17:41 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/15 00:34:05 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:44:52 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
 # include <fcntl.h>
 
 # define SIZE 32
@@ -45,9 +44,9 @@ typedef struct s_game_data
 
 	char	**map;
 	char	**mapcpy;
-	
+
 	int		w_width;
-	int 	w_height;
+	int		w_height;
 	int		steps;
 	int		player_x;
 	int		player_y;
@@ -62,19 +61,19 @@ typedef struct s_game_data
 	int		img_h;
 	int		endgame;
 	int		inv_rowlen;
-	int 	inv_borders;
+	int		inv_borders;
 	int		inv_n_exit;
 	int		inv_n_player;
 	int		inv_n_collect;
-	int 	inv_char;
-	int 	empty_line;
-	int 	inv_path;
+	int		inv_char;
+	int		empty_line;
+	int		inv_path;
 }			t_game_data;
 
 typedef struct s_pointer
 {
 	int	x;
-	int y;
+	int	y;
 }			t_pointer;
 
 void		check_params(int argc, char **argv, t_game_data *game);
@@ -83,7 +82,7 @@ int			ft_countchar(int c, char *s);
 void		check_path(t_game_data *game);
 void		free_and_exit(t_game_data *game, int n_exit);
 int			ft_draw_map(t_game_data *game);
-void 		ft_draw_img(t_game_data *game, void *img,int y, int x);
+void		ft_draw_img(t_game_data *game, void *img,int y, int x);
 void		*ft_memset(void *src, int c, size_t len);
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);

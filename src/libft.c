@@ -6,7 +6,7 @@
 /*   By: dajimene <dajimene@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 01:22:42 by dajimene          #+#    #+#             */
-/*   Updated: 2023/11/15 01:22:51 by dajimene         ###   ########.fr       */
+/*   Updated: 2023/12/27 18:08:45 by dajimene         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strnstr(const char *s1, const char *s2)
 		while (s1[i + j] != '\0' && s2[j] == s1[i + j]
 			&& s2[j] != '\0')
 		{
-			if (s2[j + 1] == '\0')
+			if (s2[j + 1] == '\0' && s1[i + j + 1] == '\0')
 				return ((char *)s1 + i);
 			j++;
 		}
